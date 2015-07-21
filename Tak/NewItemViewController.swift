@@ -62,9 +62,9 @@ class NewItemViewController: UIViewController, UITextFieldDelegate {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if(segue.identifier=="Save"){
-            if state=="New"{
+            if state!=="New"{
                 commit!.uploadCommitment(titleField.text, desc: descField.text, imp: imp.value as NSNumber)
-            }else if state=="Edit"{
+            }else if state!=="Edit"{
                 commit!.editCommitment(titleField.text, desc: descField.text, imp: imp.value as NSNumber, commit: commitment!)
             }
         }

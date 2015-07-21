@@ -17,15 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        var pageControl = UIPageControl.appearance()
+        pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
+        pageControl.currentPageIndicatorTintColor = UIColor.grayColor()
+        pageControl.backgroundColor = UIColor.whiteColor()
+        
         Parse.setApplicationId("mZNskormslX8gEY3A5f9gnPytjw2BbHZ4tdtFXSC", clientKey: "AZN6tPrNwZwgV4HAkGmF8JvlbPyZBF6TQ2QZNO3w")
-        
-        PFUser.logInWithUsername("rothecoder", password: "password")
-        
-        if let user = PFUser.currentUser() {
-            println("Log in successful")
-        } else {
-            println("No logged in user :(")
-        }
         /**
         let acl = PFACL()
         acl.setPublicReadAccess(true)

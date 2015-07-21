@@ -39,17 +39,13 @@ class Commit{
     
     func editCommitment(title: String, desc: String, imp: NSNumber, commit: Commitment){
         var query = PFQuery(className: className)
-        query.getObjectInBackgroundWithId(commit.objectId!, block: { (commitment: PFObject?, error: NSError?) -> Void in
-            if error != nil {
-                println(error)
-            } else if let commitment = commitment {
-                commitment["title"] = title
-                commitment["desc"] = desc
-                commitment["impFactor"] = imp
-                commitment.save()
-            }
-            
-        })
+        var commitment = query.getObjectWithId(commit.objectId!)
+        if let commitment = commitment{
+            commitment["title"] = title
+            commitment["desc"] = desc
+            commitment["impFactor"] = imp
+            commitment.save()
+        }
     }
     
     func deleteCommitment(commit: Commitment){

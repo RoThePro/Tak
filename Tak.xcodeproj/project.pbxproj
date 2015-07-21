@@ -36,6 +36,9 @@
 		1C14CC9D1B5976CC00112E6B /* CommitmentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C14CC961B5976CC00112E6B /* CommitmentHelper.swift */; };
 		1C14CC9E1B5976CC00112E6B /* Commitment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C14CC981B5976CC00112E6B /* Commitment.swift */; };
 		1C14CC9F1B5976CC00112E6B /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C14CC991B5976CC00112E6B /* FeedTableViewCell.swift */; };
+		1C14CCA11B59862F00112E6B /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C14CCA01B59862F00112E6B /* ContentViewController.swift */; };
+		1CBBE92F1B5EAB84002064AE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBBE92E1B5EAB84002064AE /* LoginViewController.swift */; };
+		1CBBE9311B5EB593002064AE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBBE9301B5EB593002064AE /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +85,9 @@
 		1C14CC961B5976CC00112E6B /* CommitmentHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitmentHelper.swift; sourceTree = "<group>"; };
 		1C14CC981B5976CC00112E6B /* Commitment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commitment.swift; sourceTree = "<group>"; };
 		1C14CC991B5976CC00112E6B /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		1C14CCA01B59862F00112E6B /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		1CBBE92E1B5EAB84002064AE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1CBBE9301B5EB593002064AE /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,8 +151,11 @@
 				1C14CC951B5976CC00112E6B /* NewItemViewController.swift */,
 				1C14CC961B5976CC00112E6B /* CommitmentHelper.swift */,
 				1C14CC991B5976CC00112E6B /* FeedTableViewCell.swift */,
+				1C14CCA01B59862F00112E6B /* ContentViewController.swift */,
 				1C14CC501B5974D300112E6B /* AppDelegate.swift */,
+				1CBBE9301B5EB593002064AE /* ProfileViewController.swift */,
 				1C14CC521B5974D300112E6B /* ViewController.swift */,
+				1CBBE92E1B5EAB84002064AE /* LoginViewController.swift */,
 				1C14CC541B5974D300112E6B /* Main.storyboard */,
 				1C14CC571B5974D300112E6B /* Images.xcassets */,
 				1C14CC591B5974D300112E6B /* LaunchScreen.xib */,
@@ -318,9 +327,12 @@
 				1C14CC9F1B5976CC00112E6B /* FeedTableViewCell.swift in Sources */,
 				1C14CC531B5974D300112E6B /* ViewController.swift in Sources */,
 				1C14CC9E1B5976CC00112E6B /* Commitment.swift in Sources */,
+				1C14CCA11B59862F00112E6B /* ContentViewController.swift in Sources */,
 				1C14CC9D1B5976CC00112E6B /* CommitmentHelper.swift in Sources */,
+				1CBBE9311B5EB593002064AE /* ProfileViewController.swift in Sources */,
 				1C14CC9C1B5976CC00112E6B /* NewItemViewController.swift in Sources */,
 				1C14CC511B5974D300112E6B /* AppDelegate.swift in Sources */,
+				1CBBE92F1B5EAB84002064AE /* LoginViewController.swift in Sources */,
 				1C14CC9B1B5976CC00112E6B /* FeedTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

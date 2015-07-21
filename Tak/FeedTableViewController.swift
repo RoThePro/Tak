@@ -123,12 +123,13 @@ class FeedTableViewController: UITableViewController{
             switch identifier{
             case "Save":
                 let source = segue.sourceViewController as! NewItemViewController
+                commit?.getCommitments
                 commit?.getCommitments({ (results:[AnyObject]?, error:NSError?) -> Void in
                     if let commitments = results as? [Commitment] {
                         self.objects = commitments
                         self.tableView.reloadData()
                     } else {
-                        // Handle error
+                        println("Error")
                     }
                 })
             default:
