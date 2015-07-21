@@ -7,9 +7,28 @@
 //
 
 import UIKit
+import Parse
 
 class ProfileViewController: UIViewController {
 
+    @IBAction func logoutAction(sender: AnyObject) {
+        PFUser.logOutInBackgroundWithBlock({(error) -> Void in
+            
+            if (error != nil){
+                println(error)
+            }else{
+                var alert = UIAlertController(title: "Success", message: "You are now logged out", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                alert.addAction(UIAlertAction(title: "Continue", style: UIAlertActionStyle.Default, handler: { action in
+                    self.performSegueWithIdentifier("logoutSegue", sender: self)
+                }))
+                
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+            
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

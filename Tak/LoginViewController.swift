@@ -59,6 +59,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //if PFUser
+        
         // Do any additional setup after loading the view.
     }
     
