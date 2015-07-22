@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 
+
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var usernameField: UITextField!
@@ -30,10 +31,6 @@ class LoginViewController: UIViewController {
                 
                 if ((user) != nil) {
                     
-//                    var alert = UIAlertView(title: "Success", message: "Logged In", delegate: self, cancelButtonTitle: "OK")
-//                    alert.show()
-//                    
-                    
                     var alert = UIAlertController(title: "Success", message: "You are now logged in", preferredStyle: UIAlertControllerStyle.Alert)
                     
                     alert.addAction(UIAlertAction(title: "Continue", style: UIAlertActionStyle.Default, handler: { action in
@@ -54,12 +51,61 @@ class LoginViewController: UIViewController {
             })
             
         }
+        
     }
     
-    override func viewDidLoad() {
+    @IBAction func loginWithFacebookAction(sender: FBSDKButton) {
+        
+        var permissions = ["public_profile"]
+        
+        
+        PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions) {
+            (user: PFUser?, error: NSError?) -> Void in
+            if let user = user {
+                if user.isNew {
+                    println("User signed up and logged in through Facebook!")
+                    PFFacebookUtils.linkUserInBackground(user, withPublishPermissions: ["publish_actions"], block: { (succeeded: Bool, error: NSError?) -> Void in
+                        if(succeeded){
+                            println("YAY")
+                            self.performSegueWithIdentifier("loginSegue", sender: self)
+                        }else{
+                            println("Error")
+                            println(error)
+                        }
+                    })
+                } else {
+                    println("User logged in through Facebook!")
+                    let token = FBSDKAccessToken.currentAccessToken()
+                    if(token.hasGranted("publish_actions")){
+                        self.performSegueWithIdentifier("loginSegue", sender: self)
+                    }else{
+                    PFFacebookUtils.linkUserInBackground(user, withPublishPermissions: ["publish_actions"], block: { (succeeded: Bool, error: NSError?) -> Void in
+                        if(succeeded){
+                            println("YAY")
+                            self.performSegueWithIdentifier("loginSegue", sender: self)
+                        }else{
+                            println(error)
+                            println("Error")
+                        }
+                    })
+                    }
+                    
+                }
+            } else {
+                println("Uh oh. The user cancelled the Facebook login.")
+            }
+        }
+    }
+    
+    
+    
+    
+    override func viewDidLoad() { 
         super.viewDidLoad()
         
-        //if PFUser
+        if PFUser.currentUser() != nil{
+            self.performSegueWithIdentifier("loginSegue", sender: self)
+        }
         
         // Do any additional setup after loading the view.
     }
