@@ -12,49 +12,25 @@ import Parse
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var usernameField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
-    
-    @IBAction func loginAction(sender: AnyObject) {
-        var username = self.usernameField.text
-        var password = self.passwordField.text
-        
-        if (count(username) < 4 || count(password) < 5) {
-            
-            var alert = UIAlertView(title: "Invalid", message: "Username must be greater than 4 and Password must be greater than 5", delegate: self, cancelButtonTitle: "OK")
-            alert.show()
-            
-        }else {
-            
-            
-            PFUser.logInWithUsernameInBackground(username, password: password, block: { (user, error) -> Void in
-                
-                if ((user) != nil) {
-                    
-                    var alert = UIAlertController(title: "Success", message: "You are now logged in", preferredStyle: UIAlertControllerStyle.Alert)
-                    
-                    alert.addAction(UIAlertAction(title: "Continue", style: UIAlertActionStyle.Default, handler: { action in
-                        self.performSegueWithIdentifier("loginSegue", sender: self)
-                    }))
-                    
-                    self.presentViewController(alert, animated: true, completion: nil)
-                    
-                    //self.performSegueWithIdentifier("loginSegue", sender: self)
-                    
-                }else {
-                    
-                    var alert = UIAlertView(title: "Error", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
-                    alert.show()
-                    
+    @IBAction func loginWithTwitterAction(sender: AnyObject) {
+        PFTwitterUtils.logInWithBlock {
+            (user: PFUser?, error: NSError?) -> Void in
+            if let user = user {
+                if user.isNew {
+                    println("User signed up and logged in with Twitter!")
+                    self.performSegueWithIdentifier("loginSegue", sender: self)
+                } else {
+                    println("User logged in with Twitter!")
+                    self.performSegueWithIdentifier("loginSegue", sender: self)
                 }
-                
-            })
-            
+            } else {
+                println(user)
+                println("Uh oh. The user cancelled the Twitter login.")
+            }
         }
-        
     }
     
-    @IBAction func loginWithFacebookAction(sender: FBSDKButton) {
+    @IBAction func loginWithFacebookAction(sender: AnyObject) {
         
         var permissions = ["public_profile"]
         

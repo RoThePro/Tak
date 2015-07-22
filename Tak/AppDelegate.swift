@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Parse.setApplicationId("mZNskormslX8gEY3A5f9gnPytjw2BbHZ4tdtFXSC", clientKey: "AZN6tPrNwZwgV4HAkGmF8JvlbPyZBF6TQ2QZNO3w")
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
+        PFTwitterUtils.initializeWithConsumerKey("juc1RZgyQdtUqJr2KZS1xmKtV",  consumerSecret:"YIHdlHfFEAGCLByk5coVT5c21ZsCTryXz1nSGiriTDZvBJ63vn")
         /**
         let acl = PFACL()
         acl.setPublicReadAccess(true)
