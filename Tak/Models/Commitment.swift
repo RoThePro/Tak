@@ -30,6 +30,7 @@ class Commitment: PFObject, PFSubclassing{
     @NSManaged var desc: String?
     @NSManaged var impFactor: NSNumber?
     @NSManaged var user: PFUser?
+    @NSManaged var deadline: NSDate?
     
     
     /*func uploadCommitment(title: String, desc: String, imp: Double){

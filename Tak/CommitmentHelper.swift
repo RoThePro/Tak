@@ -26,6 +26,12 @@ class Commit{
         commitment.desc = desc
         commitment.impFactor = imp
         commitment.user = PFUser.currentUser()
+        let date = NSDate()
+        let cal = NSCalendar(calendarIdentifier: NSGregorianCalendar)
+        let components = cal!.components(.CalendarUnitDay | .CalendarUnitMonth | .CalendarUnitYear, fromDate: date)
+        let newDate = cal!.dateFromComponents(components)
+        let finalDate = cal!.dateByAddingUnit(NSCalendarUnit.CalendarUnitHour, value: 24, toDate: newDate!, options: nil)
+        commitment.deadline = finalDate
         
         commitment.save()
     }

@@ -35,6 +35,7 @@ class LoginViewController: UIViewController {
         var permissions = ["public_profile"]
         
         
+        
         PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions) {
             (user: PFUser?, error: NSError?) -> Void in
             if let user = user {
@@ -43,6 +44,7 @@ class LoginViewController: UIViewController {
                     PFFacebookUtils.linkUserInBackground(user, withPublishPermissions: ["publish_actions"], block: { (succeeded: Bool, error: NSError?) -> Void in
                         if(succeeded){
                             println("YAY")
+                            println(PFUser.currentUser())
                             self.performSegueWithIdentifier("loginSegue", sender: self)
                         }else{
                             println("Error")
@@ -52,12 +54,14 @@ class LoginViewController: UIViewController {
                 } else {
                     println("User logged in through Facebook!")
                     let token = FBSDKAccessToken.currentAccessToken()
+                    //println(token)
                     if(token.hasGranted("publish_actions")){
                         self.performSegueWithIdentifier("loginSegue", sender: self)
                     }else{
                     PFFacebookUtils.linkUserInBackground(user, withPublishPermissions: ["publish_actions"], block: { (succeeded: Bool, error: NSError?) -> Void in
                         if(succeeded){
                             println("YAY")
+                            println(PFUser.currentUser())
                             self.performSegueWithIdentifier("loginSegue", sender: self)
                         }else{
                             println(error)
