@@ -9,13 +9,7 @@
 import UIKit
 
 class FeedTableViewCell: UITableViewCell {
-
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var impLabel: UILabel!
-    
-    //var test: String!
-    
-    
-
 }

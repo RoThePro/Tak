@@ -62,6 +62,17 @@ class FeedTableViewController: UITableViewController{
         var impFactor = object["impFactor"]! as! Double
         cell.impLabel.text=String(stringInterpolationSegment: impFactor)
         
+        switch impFactor{
+        case 1.0:
+            cell.backgroundColor = UIColor.yellowColor()
+        case 2.0:
+            cell.backgroundColor = UIColor.orangeColor()
+        case 3.0:
+            cell.backgroundColor = UIColor.redColor()
+        default:
+            cell.backgroundColor = UIColor.whiteColor()
+        }
+        
         return cell
     }
     
