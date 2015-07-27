@@ -39,8 +39,9 @@ class FeedTableViewController: UITableViewController{
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
+    
     
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,8 +51,7 @@ class FeedTableViewController: UITableViewController{
             return 0
         }
     }
-    
-    
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! FeedTableViewCell
         

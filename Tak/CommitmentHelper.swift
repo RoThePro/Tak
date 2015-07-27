@@ -27,7 +27,7 @@ class Commit{
         commitment.impFactor = imp
         commitment.user = PFUser.currentUser()
         let date = NSDate()
-        let cal = NSCalendar(calendarIdentifier: NSGregorianCalendar)
+        let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
         let components = cal!.components(.CalendarUnitDay | .CalendarUnitMonth | .CalendarUnitYear, fromDate: date)
         let newDate = cal!.dateFromComponents(components)
         let finalDate = cal!.dateByAddingUnit(NSCalendarUnit.CalendarUnitHour, value: 24, toDate: newDate!, options: nil)
@@ -40,7 +40,7 @@ class Commit{
         var query = PFQuery(className:className)
         query.orderByDescending("createdAt")
         query.whereKey("user", equalTo: user!)
-        query.whereKey("deadline", notEqualTo: nil)
+        query.whereKeyExists("deadline")
         query.findObjectsInBackgroundWithBlock(callback)
     }
     
@@ -56,6 +56,12 @@ class Commit{
     }
     
     func deleteCommitment(commit: Commitment){
-        commit.delete()
+        var query = PFQuery(className: className)
+        var commitment = query.getObjectWithId(commit.objectId!)
+        if let commitment = commitment{
+            commitment.removeObjectForKey("deadline")
+            commitment.save()
+        }
+        //commit.delete()
     }
 }

@@ -48,15 +48,24 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="g90-yz-3h0">
+                                <rect key="frame" x="415" y="179" width="169" height="121"/>
+                                <date key="date" timeIntervalSinceReferenceDate="459708300.93021202">
+                                    <!--2015-07-27 16:45:00 +0000-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="g90-yz-3h0" firstAttribute="trailing" secondItem="ENQ-65-Odb" secondAttribute="trailingMargin" id="9yM-gY-Nkc"/>
                             <constraint firstItem="LKg-KX-dDw" firstAttribute="leading" secondItem="tKP-f8-t4b" secondAttribute="leading" id="Cao-pV-Oa3"/>
+                            <constraint firstItem="g90-yz-3h0" firstAttribute="centerX" secondItem="tsr-iW-M96" secondAttribute="centerX" id="Gr3-sB-c4m"/>
                             <constraint firstItem="tsr-iW-M96" firstAttribute="top" secondItem="Qfp-hq-q8g" secondAttribute="bottom" constant="20" id="Q2p-w5-3Bg"/>
                             <constraint firstItem="tsr-iW-M96" firstAttribute="centerX" secondItem="Qfp-hq-q8g" secondAttribute="centerX" id="Uh7-Nd-r2J"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tsr-iW-M96" secondAttribute="trailing" constant="18" id="Xj4-xg-ErP"/>
                             <constraint firstItem="tKP-f8-t4b" firstAttribute="centerX" secondItem="LKg-KX-dDw" secondAttribute="centerX" id="crv-8a-rmV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Qfp-hq-q8g" secondAttribute="trailing" constant="28" id="kHu-46-dOm"/>
+                            <constraint firstItem="g90-yz-3h0" firstAttribute="top" secondItem="tsr-iW-M96" secondAttribute="bottom" constant="8" symbolic="YES" id="kpM-GE-HKL"/>
                             <constraint firstItem="tKP-f8-t4b" firstAttribute="top" secondItem="ENQ-65-Odb" secondAttribute="topMargin" constant="100" id="lrl-Xu-BIM"/>
                             <constraint firstItem="tKP-f8-t4b" firstAttribute="leading" secondItem="ENQ-65-Odb" secondAttribute="leadingMargin" id="oqE-P3-XJm"/>
                             <constraint firstItem="Qfp-hq-q8g" firstAttribute="top" secondItem="tKP-f8-t4b" secondAttribute="top" id="s6l-eJ-37H"/>
@@ -176,19 +185,19 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Desc" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qbn-Iw-C66">
                                 <rect key="frame" x="280" y="325" width="39" height="23"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Imp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrL-xP-NsQ">
                                 <rect key="frame" x="280" y="370" width="39" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEu-LF-LS8">
                                 <rect key="frame" x="280" y="290" width="41" height="19"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -385,7 +394,7 @@
                                     <constraint firstAttribute="height" constant="21" id="RR3-vA-Jns"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
