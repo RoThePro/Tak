@@ -286,6 +286,7 @@
 				TargetAttributes = {
 					1C14CC4A1B5974D300112E6B = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 23359WM3AN;
 					};
 					1C14CC5F1B5974D300112E6B = {
 						CreatedOnToolsVersion = 6.4;
@@ -476,6 +477,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Tak/Frameworks",
@@ -484,6 +487,7 @@
 				INFOPLIST_FILE = Tak/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = /Users/Rohan/Documents/Tak/Tak/BridgingHeader.h;
 			};
 			name = Debug;
@@ -492,6 +496,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Tak/Frameworks",
@@ -500,6 +506,7 @@
 				INFOPLIST_FILE = Tak/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = /Users/Rohan/Documents/Tak/Tak/BridgingHeader.h;
 			};
 			name = Release;

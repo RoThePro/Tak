@@ -40,6 +40,7 @@ class Commit{
         var query = PFQuery(className:className)
         query.orderByDescending("createdAt")
         query.whereKey("user", equalTo: user!)
+        query.whereKey("deadline", notEqualTo: nil)
         query.findObjectsInBackgroundWithBlock(callback)
     }
     

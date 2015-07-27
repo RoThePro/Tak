@@ -83,8 +83,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() { 
         super.viewDidLoad()
         
-        var object: AnyObject? = PFCloud.callFunction("hello", withParameters: ["name":"Rohan"])
-        println(object)
+        //var object: AnyObject? = PFCloud.callFunction("hello", withParameters: ["name":"Rohan"])
+        //println(object)
         
         if PFUser.currentUser() != nil{
             self.performSegueWithIdentifier("loginSegue", sender: self)
