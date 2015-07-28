@@ -39,7 +39,7 @@ class FeedTableViewController: UITableViewController{
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     

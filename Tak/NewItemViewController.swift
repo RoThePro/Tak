@@ -35,6 +35,9 @@ class NewItemViewController: UIViewController, UITextFieldDelegate {
             titleField.text=commitment?.title
             descField.text=commitment?.desc
             imp.value=commitment?.impFactor as! Float
+            var dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            dateField.text = dateFormatter.stringFromDate((commitment?.date!)!)
         default:
             println("You're a dumbass")
         }
@@ -71,17 +74,20 @@ class NewItemViewController: UIViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
         if(segue.identifier=="Save"){
             if state!=="New"{
-                commit!.uploadCommitment(titleField.text, desc: descField.text, imp: imp.value as NSNumber)
+                commit!.uploadCommitment(titleField.text, desc: descField.text, imp: imp.value as NSNumber, date: date!)
             }else if state!=="Edit"{
-                commit!.editCommitment(titleField.text, desc: descField.text, imp: imp.value as NSNumber, commit: commitment!)
+                commit!.editCommitment(titleField.text, desc: descField.text, imp: imp.value as NSNumber, date: date!, commit: commitment!)
             }
         }else if(segue.identifier=="datePicker"){
             let source = segue.destinationViewController as! DatePickerViewController
             source.state = state!
+            if(date != nil){
+                source.date = date
+            }
         }
     }
     
-    @IBAction func unwindToSegue(segue :UIStoryboardSegue){
+    @IBAction func unwindToSegue(segue: UIStoryboardSegue){
         if(date != nil){
             var dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"

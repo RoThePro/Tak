@@ -12,6 +12,7 @@ class DatePickerViewController: UIViewController {
 
     @IBOutlet weak var datePicker: UIDatePicker!
     var state: String!
+    var date: NSDate?
     
     
     
