@@ -12,6 +12,7 @@ class FeedCellViewController: UIViewController {
     
     @IBOutlet weak var titleBar: UINavigationItem!
     
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descLabel: UILabel!
     @IBOutlet var impLabel: UILabel!
@@ -22,6 +23,9 @@ class FeedCellViewController: UIViewController {
         titleLabel.text=commitment?.title
         descLabel.text=commitment?.desc
         impLabel.text="\((commitment?.impFactor)!)"
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateLabel.text = dateFormatter.stringFromDate((commitment?.date)!)
         //println(test)
         
         // Do any additional setup after loading the view.

@@ -18,7 +18,12 @@ class DatePickerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        datePicker.minimumDate = NSDate()
+        if(date != nil){
+            datePicker.date = date!
+        }else{
+            datePicker.date = NSDate()
+        }
         // Do any additional setup after loading the view.
     }
 
