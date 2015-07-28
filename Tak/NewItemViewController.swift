@@ -11,6 +11,7 @@ import Parse
 
 class NewItemViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var dateField: UITextField! {didSet { dateField.delegate = self } }
     @IBOutlet weak var titleField: UITextField! { didSet { titleField.delegate = self } }
     @IBOutlet weak var descField: UITextField! { didSet { descField.delegate = self } }
     @IBOutlet weak var imp: UISlider!
@@ -22,7 +23,7 @@ class NewItemViewController: UIViewController, UITextFieldDelegate {
     var commit: Commit?
     var state: String?
     var commitment: Commitment?
-    
+    var date: NSDate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,13 @@ class NewItemViewController: UIViewController, UITextFieldDelegate {
         return false
     }
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if(textField == dateField){
+            textField.endEditing(true)
+            performSegueWithIdentifier("datePicker", sender: self)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -67,6 +75,20 @@ class NewItemViewController: UIViewController, UITextFieldDelegate {
             }else if state!=="Edit"{
                 commit!.editCommitment(titleField.text, desc: descField.text, imp: imp.value as NSNumber, commit: commitment!)
             }
+        }else if(segue.identifier=="datePicker"){
+            let source = segue.destinationViewController as! DatePickerViewController
+            source.state = state!
         }
     }
+    
+    @IBAction func unwindToSegue(segue :UIStoryboardSegue){
+        if(date != nil){
+            var dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            dateField.text = dateFormatter.stringFromDate(date!)
+        }else{
+            println("Not set")
+        }
+    }
+
 }

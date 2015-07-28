@@ -83,14 +83,18 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() { 
         super.viewDidLoad()
         
-        //var object: AnyObject? = PFCloud.callFunction("hello", withParameters: ["name":"Rohan"])
-        //println(object)
         
-        if PFUser.currentUser() != nil{
-            self.performSegueWithIdentifier("loginSegue", sender: self)
-        }
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if(PFUser.currentUser() != nil){
+            println("Works")
+            performSegueWithIdentifier("loginSegue", sender: self)
+            println("Why?")
+        }
+    
     }
     
     override func didReceiveMemoryWarning() {
