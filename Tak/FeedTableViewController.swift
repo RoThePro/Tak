@@ -24,7 +24,7 @@ class FeedTableViewController: UITableViewController{
     var days = [NSDate]()
     var currentCommitment: Commitment?
     
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class FeedTableViewController: UITableViewController{
         commit?.getCommitments({(results:[AnyObject]?, error:NSError?) -> Void in
             if let commitments = results as? [Commitment] {
                 for commitment in commitments{
-                   self.testObjects[commitment["date"] as! NSDate]=[]
+                    self.testObjects[commitment["date"] as! NSDate]=[]
                 }
                 for commitment in commitments{
                     self.testObjects[commitment["date"] as! NSDate]!.append(commitment)
@@ -67,7 +67,7 @@ class FeedTableViewController: UITableViewController{
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if(self.days.count != 0){
+        if(!self.days.isEmpty){
             var tempDays = Set(days)
             //println(tempDays.count)
             days = Array(tempDays)
@@ -96,16 +96,14 @@ class FeedTableViewController: UITableViewController{
     }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if(days.count != 0){
-            if(testObjects[days[section]]!.count != 0){
-                return testObjects[days[section]]!.count
-            }
+        if(!days.isEmpty){
+            return testObjects[days[section]]!.count
         }
         
         return 0
         
     }
-
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! FeedTableViewCell
         
@@ -153,9 +151,12 @@ class FeedTableViewController: UITableViewController{
         })
         
         var deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            tableView.beginUpdates()
             self.commit?.deleteCommitment(self.testObjects[self.days[indexPath.section]]![indexPath.row])
             self.commit?.getCommitments({ (results:[AnyObject]?, error:NSError?) -> Void in
                 if let commitments = results as? [Commitment] {
+                    self.testObjects = Dictionary()
+                    self.days = []
                     for commitment in commitments{
                         self.testObjects[commitment["date"] as! NSDate]=[]
                     }
@@ -173,9 +174,10 @@ class FeedTableViewController: UITableViewController{
                     }
                     
                     self.days = sorted(self.days, AscendingNSDate)
+                    
                     //tableView.deleteSections(<#sections: NSIndexSet#>, withRowAnimation: <#UITableViewRowAnimation#>)
                     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-                    tableView.reloadData()
+                    tableView.endUpdates()
                 } else {
                     println("YOU RETARD")
                 }

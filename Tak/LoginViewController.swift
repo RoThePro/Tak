@@ -8,6 +8,8 @@
 
 import UIKit
 import Parse
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 
 class LoginViewController: UIViewController {
@@ -32,7 +34,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginWithFacebookAction(sender: AnyObject) {
         
-        var permissions = ["public_profile"]
+        var permissions = ["public_profile","email"]
         
         
         
@@ -43,8 +45,13 @@ class LoginViewController: UIViewController {
                     println("User signed up and logged in through Facebook!")
                     PFFacebookUtils.linkUserInBackground(user, withPublishPermissions: ["publish_actions"], block: { (succeeded: Bool, error: NSError?) -> Void in
                         if(succeeded){
-                            println("YAY")
-                            println(PFUser.currentUser())
+                            var fbGraphRequest: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "name, email"])
+                            fbGraphRequest.startWithCompletionHandler({(connection, result, error) -> Void in
+                                var results = result as! NSDictionary
+                                user["name"] = results["name"]
+                                user["email"] = results["email"]
+                                user.save()
+                            })
                             self.performSegueWithIdentifier("loginSegue", sender: self)
                         }else{
                             println("Error")
@@ -56,18 +63,25 @@ class LoginViewController: UIViewController {
                     let token = FBSDKAccessToken.currentAccessToken()
                     //println(token)
                     if(token.hasGranted("publish_actions")){
+                        var fbGraphRequest: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "name, email"])
+                        fbGraphRequest.startWithCompletionHandler({(connection, result, error) -> Void in
+                            var results = result as! NSDictionary
+                            user["name"] = results["name"]
+                            user["email"] = results["email"]
+                            user.save()
+                        })
                         self.performSegueWithIdentifier("loginSegue", sender: self)
                     }else{
-                    PFFacebookUtils.linkUserInBackground(user, withPublishPermissions: ["publish_actions"], block: { (succeeded: Bool, error: NSError?) -> Void in
-                        if(succeeded){
-                            println("YAY")
-                            println(PFUser.currentUser())
-                            self.performSegueWithIdentifier("loginSegue", sender: self)
-                        }else{
-                            println(error)
-                            println("Error")
-                        }
-                    })
+                        PFFacebookUtils.linkUserInBackground(user, withPublishPermissions: ["publish_actions"], block: { (succeeded: Bool, error: NSError?) -> Void in
+                            if(succeeded){
+                                println("YAY")
+                                println(PFUser.currentUser())
+                                self.performSegueWithIdentifier("loginSegue", sender: self)
+                            }else{
+                                println(error)
+                                println("Error")
+                            }
+                        })
                     }
                     
                 }
@@ -80,7 +94,7 @@ class LoginViewController: UIViewController {
     
     
     
-    override func viewDidLoad() { 
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         
@@ -94,7 +108,7 @@ class LoginViewController: UIViewController {
             performSegueWithIdentifier("loginSegue", sender: self)
             println("Why?")
         }
-    
+        
     }
     
     override func didReceiveMemoryWarning() {
