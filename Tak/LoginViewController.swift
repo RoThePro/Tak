@@ -45,11 +45,12 @@ class LoginViewController: UIViewController {
                     println("User signed up and logged in through Facebook!")
                     PFFacebookUtils.linkUserInBackground(user, withPublishPermissions: ["publish_actions"], block: { (succeeded: Bool, error: NSError?) -> Void in
                         if(succeeded){
-                            var fbGraphRequest: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "name, email"])
+                            var fbGraphRequest: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "name, email, picture.width(100).height(100)"])
                             fbGraphRequest.startWithCompletionHandler({(connection, result, error) -> Void in
                                 var results = result as! NSDictionary
                                 user["name"] = results["name"]
                                 user["email"] = results["email"]
+                                user["picture"] = results["picture"]
                                 user.save()
                             })
                             self.performSegueWithIdentifier("loginSegue", sender: self)
@@ -63,11 +64,17 @@ class LoginViewController: UIViewController {
                     let token = FBSDKAccessToken.currentAccessToken()
                     //println(token)
                     if(token.hasGranted("publish_actions")){
-                        var fbGraphRequest: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "name, email"])
+                        var fbGraphRequest: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "name, email, picture.width(900).height(900)"])
                         fbGraphRequest.startWithCompletionHandler({(connection, result, error) -> Void in
                             var results = result as! NSDictionary
                             user["name"] = results["name"]
                             user["email"] = results["email"]
+                            var picture = results["picture"]!["data"] as! NSDictionary
+                            var url = picture["url"] as! String
+                            var pictureObj = NSURL(string: url)
+                            var data = NSData(contentsOfURL: pictureObj!)
+                            var imageFile = PFFile(data: data!)
+                            user["picture"] = imageFile
                             user.save()
                         })
                         self.performSegueWithIdentifier("loginSegue", sender: self)
