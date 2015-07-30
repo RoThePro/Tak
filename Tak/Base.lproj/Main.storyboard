@@ -26,10 +26,13 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="1" maxValue="3" translatesAutoresizingMaskIntoConstraints="NO" id="Qfp-hq-q8g">
-                                <rect key="frame" x="440" y="100" width="118" height="31"/>
+                                <rect key="frame" x="452" y="100" width="118" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="114" id="KS2-AL-4hg"/>
                                 </constraints>
+                                <color key="minimumTrackTintColor" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="thumbTintColor" red="1" green="0.32156862749999998" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="impAction:" destination="QKC-iO-7SR" eventType="valueChanged" id="Ecg-q5-55f"/>
                                 </connections>
@@ -39,8 +42,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xte-OG-b9R">
+                                <rect key="frame" x="16" y="235" width="150" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsr-iW-M96">
-                                <rect key="frame" x="433" y="150" width="133" height="21"/>
+                                <rect key="frame" x="445" y="150" width="118" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="NnK-ew-ydE"/>
                                 </constraints>
@@ -48,22 +56,17 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xte-OG-b9R">
-                                <rect key="frame" x="16" y="235" width="150" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="LKg-KX-dDw" firstAttribute="leading" secondItem="tKP-f8-t4b" secondAttribute="leading" id="Cao-pV-Oa3"/>
                             <constraint firstItem="Xte-OG-b9R" firstAttribute="leading" secondItem="LKg-KX-dDw" secondAttribute="leading" id="EmI-TG-UME"/>
                             <constraint firstItem="tsr-iW-M96" firstAttribute="top" secondItem="Qfp-hq-q8g" secondAttribute="bottom" constant="20" id="Q2p-w5-3Bg"/>
-                            <constraint firstItem="tsr-iW-M96" firstAttribute="centerX" secondItem="Qfp-hq-q8g" secondAttribute="centerX" id="Uh7-Nd-r2J"/>
+                            <constraint firstItem="tsr-iW-M96" firstAttribute="centerX" secondItem="Qfp-hq-q8g" secondAttribute="centerX" constant="-7" id="Uh7-Nd-r2J"/>
                             <constraint firstItem="Xte-OG-b9R" firstAttribute="top" secondItem="LKg-KX-dDw" secondAttribute="bottom" constant="37" id="V2X-ba-7cO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="tsr-iW-M96" secondAttribute="trailing" constant="18" id="Xj4-xg-ErP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tsr-iW-M96" secondAttribute="trailing" constant="21" id="Xj4-xg-ErP"/>
                             <constraint firstItem="tKP-f8-t4b" firstAttribute="centerX" secondItem="LKg-KX-dDw" secondAttribute="centerX" id="crv-8a-rmV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Qfp-hq-q8g" secondAttribute="trailing" constant="28" id="kHu-46-dOm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qfp-hq-q8g" secondAttribute="trailing" constant="16" id="kHu-46-dOm"/>
                             <constraint firstItem="tKP-f8-t4b" firstAttribute="top" secondItem="ENQ-65-Odb" secondAttribute="topMargin" constant="100" id="lrl-Xu-BIM"/>
                             <constraint firstItem="tKP-f8-t4b" firstAttribute="leading" secondItem="ENQ-65-Odb" secondAttribute="leadingMargin" id="oqE-P3-XJm"/>
                             <constraint firstItem="Qfp-hq-q8g" firstAttribute="top" secondItem="tKP-f8-t4b" secondAttribute="top" id="s6l-eJ-37H"/>
@@ -74,11 +77,13 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="New Item" id="lHZ-Ia-G4H">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="tNg-3G-Yyc">
+                            <color key="tintColor" red="1" green="0.32156862749999998" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="L5I-sv-grc" kind="unwind" identifier="Cancel" unwindAction="unwindToSegue:" id="7aD-dS-cgg"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="oTk-e6-dlG">
+                            <color key="tintColor" red="1" green="0.32156862749999998" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="L5I-sv-grc" kind="unwind" identifier="Save" unwindAction="unwindToSegue:" id="taw-to-5Yn"/>
                             </connections>
@@ -166,6 +171,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="App Name" id="lOF-q2-toI">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ezc-0H-d3W">
+                            <color key="tintColor" red="1" green="0.32156862745098036" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="QKC-iO-7SR" kind="show" identifier="newCommitment" id="Z5l-tT-kCO"/>
                             </connections>
@@ -472,6 +478,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="yVr-md-tjM">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Ghj-s9-FZ4">
+                            <color key="tintColor" red="1" green="0.32156862749999998" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="go5-IJ-2zf" kind="show" id="fcR-Nd-uWp"/>
                             </connections>
@@ -534,6 +541,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Date Picker" id="ogj-dH-JTZ">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="L7C-Qd-0sk">
+                            <color key="tintColor" red="1" green="0.32156862749999998" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="L5I-sv-grc" kind="unwind" identifier="UnwindFromDate" unwindAction="unwindToSegue:" id="VdU-Zl-moY"/>
                             </connections>

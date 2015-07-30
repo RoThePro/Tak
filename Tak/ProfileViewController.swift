@@ -23,6 +23,8 @@ class ProfileViewController: UIViewController {
             self.profileImageView.image = UIImage(data: result!["picture"]!.getData()!)
             self.nameLabel.text = result!["name"] as? String
             self.setPictureDesign(self.profileImageView)
+            
+            self.view.backgroundColor = UIColor(red: 4/10, green:4/10, blue:4/10, alpha:1.0)
         })
         
         super.viewDidLoad()
@@ -38,7 +40,8 @@ class ProfileViewController: UIViewController {
     func setPictureDesign(image: UIImageView){
         image.layer.cornerRadius = image.frame.size.height/2
         image.layer.masksToBounds = true
-        image.layer.borderWidth = 0;
+        image.layer.borderWidth = 1;
+        image.layer.borderColor = UIColor.whiteColor().CGColor
     }
     
     

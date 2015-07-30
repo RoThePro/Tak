@@ -36,6 +36,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFACL.setDefaultACL(acl, withAccessForCurrentUser: true)
         **/
         
+
+        UINavigationBar.appearance().barTintColor = UIColor(red: 1/10, green: 1/10, blue: 1/10, alpha: 1.0)
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
+        
+        UILabel.appearance().textColor = UIColor.whiteColor()
+        
+        UITextField.appearance().backgroundColor = UIColor(red: 6/10, green: 6/10, blue: 6/10, alpha: 1.0)
+        
+        UITabBar.appearance().barTintColor = UIColor(red: 1/10, green: 1/10, blue: 1/10, alpha: 1.0)
+        
         return true
     }
     

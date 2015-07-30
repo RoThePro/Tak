@@ -39,9 +39,10 @@ class NewItemViewController: UIViewController, UITextFieldDelegate {
             dateFormatter.dateFormat = "yyyy-MM-dd"
             dateField.text = dateFormatter.stringFromDate((commitment?.date!)!)
         default:
-            println("You're a dumbass")
+            return
         }
-        //UITextField.delegate=self
+        
+        self.view.backgroundColor = UIColor(red: 4/10, green:4/10, blue:4/10, alpha:1.0)
         
         impValue.text="Imp Factor: \(imp.value)"
         
@@ -53,9 +54,14 @@ class NewItemViewController: UIViewController, UITextFieldDelegate {
         return false
     }
     
+    func textFieldDidEndEditing(textField: UITextField) {
+        println("Hello")
+    }
+    
     func textFieldDidBeginEditing(textField: UITextField) {
         if(textField == dateField){
             textField.endEditing(true)
+            
             performSegueWithIdentifier("datePicker", sender: self)
         }
     }
@@ -73,10 +79,19 @@ class NewItemViewController: UIViewController, UITextFieldDelegate {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if(segue.identifier=="Save"){
-            if state!=="New"{
-                commit!.uploadCommitment(titleField.text, desc: descField.text, imp: imp.value as NSNumber, date: date!)
-            }else if state!=="Edit"{
-                commit!.editCommitment(titleField.text, desc: descField.text, imp: imp.value as NSNumber, date: date!, commit: commitment!)
+            if(!titleField.text.isEmpty && !descField.text.isEmpty && date != nil){
+                if state!=="New"{
+                    commit!.uploadCommitment(titleField.text, desc: descField.text, imp: imp.value as NSNumber, date: date!)
+                }else if state!=="Edit"{
+                    commit!.editCommitment(titleField.text, desc: descField.text, imp: imp.value as NSNumber, date: date!, commit: commitment!)
+                }
+            }else{
+                var alert: UIAlertController = UIAlertController(title: "Empty Fields", message:"Please enter values for Title, Description and Date", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) -> Void in
+                    println("OK")
+                }))
+                
+                presentViewController(alert, animated: true, completion: nil)
             }
         }else if(segue.identifier=="datePicker"){
             let source = segue.destinationViewController as! DatePickerViewController

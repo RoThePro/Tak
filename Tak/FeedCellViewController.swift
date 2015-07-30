@@ -28,6 +28,8 @@ class FeedCellViewController: UIViewController {
         dateLabel.text = dateFormatter.stringFromDate((commitment?.date)!)
         //println(test)
         
+        self.view.backgroundColor = UIColor(red: 4/10, green:4/10, blue:4/10, alpha:1.0)
+
         // Do any additional setup after loading the view.
     }
     
