@@ -25,6 +25,38 @@ class NewItemViewController: UIViewController, UITextFieldDelegate {
     var commitment: Commitment?
     var date: NSDate?
     
+    @IBAction func datePicker(sender: UITextField) {
+        var datePickerView:UIDatePicker = UIDatePicker()
+        
+        datePickerView.datePickerMode = UIDatePickerMode.Date
+        datePickerView.minimumDate = NSDate()
+        
+        datePickerView.setValue(UIColor.whiteColor(), forKeyPath: "textColor")
+        
+        if(date != nil){
+            datePickerView.date = date!
+        }
+        
+        sender.inputView = datePickerView
+        
+        
+        datePickerView.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    func datePickerValueChanged(sender:UIDatePicker) {
+        
+        var dateFormatter = NSDateFormatter()
+        
+        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        
+        dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+        
+        date = sender.date
+        
+        dateField.text = dateFormatter.stringFromDate(sender.date)
+        
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         commit=Commit()
@@ -58,13 +90,6 @@ class NewItemViewController: UIViewController, UITextFieldDelegate {
         println("Hello")
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
-        if(textField == dateField){
-            textField.endEditing(true)
-            
-            performSegueWithIdentifier("datePicker", sender: self)
-        }
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -79,7 +104,7 @@ class NewItemViewController: UIViewController, UITextFieldDelegate {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if(segue.identifier=="Save"){
-            if(!titleField.text.isEmpty && !descField.text.isEmpty && date != nil){
+            if(!titleField.text.isEmpty && !descField.text.isEmpty && !dateField.text.isEmpty){
                 if state!=="New"{
                     commit!.uploadCommitment(titleField.text, desc: descField.text, imp: imp.value as NSNumber, date: date!)
                 }else if state!=="Edit"{

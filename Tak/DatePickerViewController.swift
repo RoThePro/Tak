@@ -25,7 +25,7 @@ class DatePickerViewController: UIViewController {
             datePicker.date = NSDate()
         }
         
-        self.view.backgroundColor = UIColor(red: 4/10, green:4/10, blue:4/10, alpha:1.0)
+        self.view.backgroundColor = UIColor.clearColor()
 
         // Do any additional setup after loading the view.
     }
