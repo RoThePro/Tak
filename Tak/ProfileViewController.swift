@@ -21,9 +21,8 @@ class ProfileViewController: UIViewController {
         userHelper = User()
         userHelper?.getUser({ (result: PFObject?, error: NSError?) -> Void in
             self.profileImageView.image = UIImage(data: result!["picture"]!.getData()!)
-            self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.height/2
-            self.profileImageView.layer.masksToBounds = true
-            self.profileImageView.layer.borderWidth = 0;
+            self.nameLabel.text = result!["name"] as? String
+            self.setPictureDesign(self.profileImageView)
         })
         
         super.viewDidLoad()
@@ -34,6 +33,12 @@ class ProfileViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setPictureDesign(image: UIImageView){
+        image.layer.cornerRadius = image.frame.size.height/2
+        image.layer.masksToBounds = true
+        image.layer.borderWidth = 0;
     }
     
     

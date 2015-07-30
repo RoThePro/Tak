@@ -61,7 +61,7 @@ class FeedTableViewController: UITableViewController{
         
         //Gets number of rows
         //Makes border between cells clear
-        //tableView.separatorColor=UIColor.clearColor()
+        tableView.separatorColor=UIColor.clearColor()
     }
     
     // MARK: - Table view data source
@@ -107,6 +107,11 @@ class FeedTableViewController: UITableViewController{
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! FeedTableViewCell
         
+        cell.cellView.layer.cornerRadius = 10
+        cell.backgroundColor = UIColor.whiteColor()
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        
+        
         var object=[Commitment]()
         if(days.count != 0){
             //println(indexPath.section)
@@ -118,17 +123,16 @@ class FeedTableViewController: UITableViewController{
         cell.titleLabel.text=object[indexPath.row]["title"] as? String
         cell.descLabel.text=object[indexPath.row]["desc"] as? String
         var impFactor = object[indexPath.row]["impFactor"]! as! Double
-        cell.impLabel.text=String(stringInterpolationSegment: impFactor)
         
         switch impFactor{
         case 1.0:
-            cell.backgroundColor = UIColor.yellowColor()
+            cell.cellView.backgroundColor = UIColor.yellowColor()
         case 2.0:
-            cell.backgroundColor = UIColor.orangeColor()
+            cell.cellView.backgroundColor = UIColor.orangeColor()
         case 3.0:
-            cell.backgroundColor = UIColor.redColor()
+            cell.cellView.backgroundColor = UIColor.redColor()
         default:
-            cell.backgroundColor = UIColor.whiteColor()
+            cell.cellView.backgroundColor = UIColor.whiteColor()
         }
         
         return cell
@@ -177,6 +181,7 @@ class FeedTableViewController: UITableViewController{
                     
                     //tableView.deleteSections(<#sections: NSIndexSet#>, withRowAnimation: <#UITableViewRowAnimation#>)
                     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                    tableView.reloadData()
                     tableView.endUpdates()
                 } else {
                     println("YOU RETARD")
