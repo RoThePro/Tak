@@ -62,14 +62,21 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
         
         
         //Makes border between cells clear
-        tableView.backgroundColor = UIColor(red: 4/10, green:4/10, blue:4/10, alpha:1.0)
+        //tableView.backgroundColor = UIColor(red: 4/10, green:4/10, blue:4/10, alpha:1.0)
+        tableView.backgroundColor = UIColor.whiteColor()
         tableView.separatorColor=UIColor.clearColor()
     }
     
     func handleAction(recognizer: UIPanGestureRecognizer){
         var startLocation: CGPoint = recognizer.locationInView(self.tableView)
         var translation: CGPoint = recognizer.translationInView(self.tableView)
-        var indexPath: NSIndexPath?
+        var indexPath: NSIndexPath!
+        if(recognizer.state == UIGestureRecognizerState.Changed){
+            indexPath = self.tableView.indexPathForRowAtPoint(startLocation)
+            var cell = self.tableView.cellForRowAtIndexPath(indexPath) as! FeedTableViewCell
+            var original = cell.cellView.frame.origin
+            cell.cellView.frame = CGRect(x: original.x + translation.x, y: original.y + translation.y, width: cell.cellView.frame.width, height: cell.cellView.frame.height)
+        }
         if(recognizer.state == UIGestureRecognizerState.Ended){
             indexPath = self.tableView.indexPathForRowAtPoint(startLocation)
             if(indexPath != nil){

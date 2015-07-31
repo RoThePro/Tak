@@ -548,7 +548,7 @@
     </scenes>
     <resources>
         <image name="Feed" width="25" height="25"/>
-        <image name="Profile" width="25" height="25"/>
+        <image name="Profile" width="25" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="gQ1-oF-Hbh"/>
