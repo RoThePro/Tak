@@ -42,7 +42,6 @@
 		1CBBE9311B5EB593002064AE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBBE9301B5EB593002064AE /* ProfileViewController.swift */; };
 		1CBBE9351B5EE1DC002064AE /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CBBE9341B5EE1DC002064AE /* FBSDKCoreKit.framework */; };
 		1CBBE93C1B5EF36E002064AE /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CBBE93B1B5EF36E002064AE /* FBSDKLoginKit.framework */; };
-		1CCAB4BA1B66DABF000DFA49 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCAB4B91B66DABF000DFA49 /* DatePickerViewController.swift */; };
 		1CCAB4BC1B69559D000DFA49 /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCAB4BB1B69559D000DFA49 /* ProfileSettingsViewController.swift */; };
 		1CCAB4C01B697541000DFA49 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCAB4BF1B697541000DFA49 /* UserHelper.swift */; };
 /* End PBXBuildFile section */
@@ -98,7 +97,6 @@
 		1CBBE9341B5EE1DC002064AE /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		1CBBE93A1B5EEF93002064AE /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		1CBBE93B1B5EF36E002064AE /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		1CCAB4B91B66DABF000DFA49 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		1CCAB4BB1B69559D000DFA49 /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
 		1CCAB4BF1B697541000DFA49 /* UserHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -165,7 +163,6 @@
 				1C14CC931B5976CC00112E6B /* FeedCellViewController.swift */,
 				1C14CC941B5976CC00112E6B /* FeedTableViewController.swift */,
 				1C14CC951B5976CC00112E6B /* NewItemViewController.swift */,
-				1CCAB4B91B66DABF000DFA49 /* DatePickerViewController.swift */,
 				1C14CC961B5976CC00112E6B /* CommitmentHelper.swift */,
 				1CCAB4BF1B697541000DFA49 /* UserHelper.swift */,
 				1C14CC991B5976CC00112E6B /* FeedTableViewCell.swift */,
@@ -357,7 +354,6 @@
 				1C14CC9D1B5976CC00112E6B /* CommitmentHelper.swift in Sources */,
 				1CBBE9311B5EB593002064AE /* ProfileViewController.swift in Sources */,
 				1C14CC9C1B5976CC00112E6B /* NewItemViewController.swift in Sources */,
-				1CCAB4BA1B66DABF000DFA49 /* DatePickerViewController.swift in Sources */,
 				1C14CC511B5974D300112E6B /* AppDelegate.swift in Sources */,
 				1CBBE92F1B5EAB84002064AE /* LoginViewController.swift in Sources */,
 				1C14CC9B1B5976CC00112E6B /* FeedTableViewController.swift in Sources */,

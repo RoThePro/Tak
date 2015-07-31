@@ -23,7 +23,6 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
     var testObjects = [NSDate:[Commitment]]()
     var days = [NSDate]()
     var currentCommitment: Commitment?
-    var translation: CGPoint = CGPointZero
     var origin: CGPoint = CGPointZero
     
     
@@ -63,12 +62,13 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
         
         
         //Makes border between cells clear
-        //tableView.backgroundColor = UIColor(red: 4/10, green:4/10, blue:4/10, alpha:1.0)
-        tableView.backgroundColor = UIColor.whiteColor()
+        tableView.bounces = false
+        tableView.backgroundColor = UIColor(red: 4/10, green:4/10, blue:4/10, alpha:1.0)
+        //tableView.backgroundColor = UIColor.whiteColor()
         tableView.separatorColor=UIColor.clearColor()
     }
     
-    func handleAction(recognizer: UIPanGestureRecognizer){
+    /*func handleAction(recognizer: UIPanGestureRecognizer){
         var startLocation: CGPoint = recognizer.locationInView(self.tableView)
         var velocity: CGPoint = recognizer.velocityInView(self.tableView)
         var indexPath: NSIndexPath!
@@ -82,17 +82,11 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
                 }
                 var original = cell.cellView.frame.origin
                 var cellTranslation = recognizer.translationInView(self.tableView)
-                cell.cellView.frame = CGRect(x: original.x + cellTranslation.x, y: original.y, width: cell.cellView.frame.width, height: cell.cellView.frame.height)
-                translation = CGPoint(x: translation.x + cellTranslation.x, y: translation.y + cellTranslation.y)
-                println(translation)
+                if(cellTranslation.x < 0){
+                    cell.cellView.frame = CGRect(x: original.x + cellTranslation.x + 5, y: original.y, width: cell.cellView.frame.width, height: cell.cellView.frame.height)
+                }
                 recognizer.setTranslation(CGPointZero, inView: self.tableView)
-            }
-        }
-        if(recognizer.state == UIGestureRecognizerState.Ended){
-            indexPath = self.tableView.indexPathForRowAtPoint(startLocation)
-            if(indexPath != nil){
-                var finalPoint = CGPointMake(translation.x, translation.y)
-                if(finalPoint.x < -100){
+                if(CGPoint(x: cell.cellView.frame.origin.x - origin.x, y: cell.cellView.frame.origin.y - origin.y).x < -(cell.cellView.frame.width/4)){
                     var alert: UIAlertController = UIAlertController(title: "Are you sure you want to delete?", message:"", preferredStyle: UIAlertControllerStyle.Alert)
                     
                     alert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { (action: UIAlertAction!) -> Void in
@@ -138,19 +132,72 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
                     }))
                     
                     presentViewController(alert, animated: true, completion: nil)
-                    
-                }else if(finalPoint.x > 100){
-                    println("Swipe left @\(indexPath!.row)")
-                }else if(finalPoint.y != 0){
-                    //self.tableView.removeGestureRecognizer(self.swipe)
                 }
-            }else{
-                println("Select a cell dummy")
             }
-            
         }
+//        if(recognizer.state == UIGestureRecognizerState.Ended){
+//            indexPath = self.tableView.indexPathForRowAtPoint(startLocation)
+//            if(indexPath != nil){
+//                var finalPoint = CGPointMake(translation.x, translation.y)
+//                if(finalPoint.x < -100){
+//                    var alert: UIAlertController = UIAlertController(title: "Are you sure you want to delete?", message:"", preferredStyle: UIAlertControllerStyle.Alert)
+//                    
+//                    alert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { (action: UIAlertAction!) -> Void in
+//                        self.tableView.beginUpdates()
+//                        self.commit?.deleteCommitment(self.testObjects[self.days[indexPath!.section]]![indexPath!.row])
+//                        self.commit?.getCommitments({ (results:[AnyObject]?, error:NSError?) -> Void in
+//                            if let commitments = results as? [Commitment] {
+//                                self.testObjects = Dictionary()
+//                                self.days = []
+//                                for commitment in commitments{
+//                                    self.testObjects[commitment["date"] as! NSDate]=[]
+//                                }
+//                                for commitment in commitments{
+//                                    self.testObjects[commitment["date"] as! NSDate]!.append(commitment)
+//                                    self.days.append(commitment["date"] as! NSDate)
+//                                }
+//                                
+//                                func AscendingNSDate(s1: NSDate, s2: NSDate) -> Bool {
+//                                    var earlier = s1.earlierDate(s2)
+//                                    if earlier == s1 {
+//                                        return true
+//                                    }
+//                                    return false
+//                                }
+//                                
+//                                self.days = sorted(self.days, AscendingNSDate)
+//                                
+//                                self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Left)
+//                                self.tableView.reloadData()
+//                                self.tableView.endUpdates()
+//                            } else {
+//                                println("YOU RETARD")
+//                            }
+//                        })
+//                    }))
+//                    alert.addAction(UIAlertAction(title: "No", style: .Default, handler: { (action: UIAlertAction!) -> Void in
+//                        println("OK")
+//                        if(indexPath != nil){
+//                            var cell = self.tableView.cellForRowAtIndexPath(indexPath) as! FeedTableViewCell
+//                            cell.cellView.frame.origin = self.origin
+//                        }
+//                        
+//                    }))
+//                    
+//                    presentViewController(alert, animated: true, completion: nil)
+//                    
+//                }else if(finalPoint.x > 100){
+//                    println("Swipe left @\(indexPath!.row)")
+//                }else if(finalPoint.y != 0){
+//                    //self.tableView.removeGestureRecognizer(self.swipe)
+//                }
+//            }else{
+//                println("Select a cell dummy")
+//            }
+//            
+//        }
         
-    }
+    }*/
     
     // MARK: - Table view data source
     
@@ -195,11 +242,6 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! FeedTableViewCell
         
-        var swipe: UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handleAction:")
-        swipe.delegate = self
-        cell.addGestureRecognizer(swipe)
-        
-        cell.cellView.layer.cornerRadius = 10
         cell.backgroundColor = UIColor.clearColor()
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         
@@ -218,13 +260,13 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
         
         switch impFactor{
         case 1.0:
-            cell.cellView.backgroundColor = UIColor(red:0.733, green:0.871, blue:0.984, alpha:1)
+            cell.backgroundColor = UIColor(red:0.733, green:0.871, blue:0.984, alpha:1)
         case 2.0:
-            cell.cellView.backgroundColor = UIColor(red:0.129, green:0.588, blue:0.953, alpha:1)
+            cell.backgroundColor = UIColor(red:0.129, green:0.588, blue:0.953, alpha:1)
         case 3.0:
-            cell.cellView.backgroundColor = UIColor(red:0.098, green:0.463, blue:0.824, alpha:1)
+            cell.backgroundColor = UIColor(red:0.098, green:0.463, blue:0.824, alpha:1)
         default:
-            cell.cellView.backgroundColor = UIColor.whiteColor()
+            cell.backgroundColor = UIColor.whiteColor()
         }
         
         return cell
@@ -232,10 +274,12 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
     
     
     
+    var test: UITableViewRowActionStyle = UITableViewRowActionStyle.Default
+    
     // Override to support editing the table view.
     // Refer to http://pablin.org/2014/09/25/uitableviewrowaction-introduction/
     
-    /*override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
     }
     
@@ -243,7 +287,7 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
         
         var editAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "Edit" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             self.currentCommitment = self.testObjects[self.days[indexPath.section]]![indexPath.row]
-            self.performSegueWithIdentifier("editCommitment", sender: self)
+            //self.performSegueWithIdentifier("editCommitment", sender: self)
         })
         
         var deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
@@ -284,7 +328,7 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
         return [deleteAction, editAction]
         //return nil
     }
-    */
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         currentCommitment = self.testObjects[self.days[indexPath.section]]![indexPath.row]
         self.performSegueWithIdentifier("feedViewSegue", sender: self)
@@ -295,13 +339,6 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
         if(segue.identifier=="feedViewSegue"){
             var svc = segue.destinationViewController as! FeedCellViewController
             svc.commitment=currentCommitment!
-        } else if(segue.identifier == "newCommitment"){
-            var svc = segue.destinationViewController as! NewItemViewController
-            svc.state="New"
-        } else if(segue.identifier == "editCommitment"){
-            var svc = segue.destinationViewController as! NewItemViewController
-            svc.commitment=currentCommitment!
-            svc.state="Edit"
         }
     }
     
@@ -311,9 +348,11 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
             switch identifier{
             case "Save":
                 let source = segue.sourceViewController as! NewItemViewController
-                commit?.getCommitments
+
                 commit?.getCommitments({ (results:[AnyObject]?, error:NSError?) -> Void in
                     if let commitments = results as? [Commitment] {
+                        self.testObjects = Dictionary()
+                        self.days = []
                         for commitment in commitments{
                             self.testObjects[commitment["date"] as! NSDate]=[]
                         }
