@@ -23,7 +23,8 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
     var testObjects = [NSDate:[Commitment]]()
     var days = [NSDate]()
     var currentCommitment: Commitment?
-    
+    var translation: CGPoint = CGPointZero
+    var origin: CGPoint = CGPointZero
     
     
     override func viewDidLoad() {
@@ -69,13 +70,23 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
     
     func handleAction(recognizer: UIPanGestureRecognizer){
         var startLocation: CGPoint = recognizer.locationInView(self.tableView)
-        var translation: CGPoint = recognizer.translationInView(self.tableView)
+        var velocity: CGPoint = recognizer.velocityInView(self.tableView)
         var indexPath: NSIndexPath!
+        
         if(recognizer.state == UIGestureRecognizerState.Changed){
             indexPath = self.tableView.indexPathForRowAtPoint(startLocation)
-            var cell = self.tableView.cellForRowAtIndexPath(indexPath) as! FeedTableViewCell
-            var original = cell.cellView.frame.origin
-            cell.cellView.frame = CGRect(x: original.x + translation.x, y: original.y + translation.y, width: cell.cellView.frame.width, height: cell.cellView.frame.height)
+            if(indexPath != nil){
+                var cell = self.tableView.cellForRowAtIndexPath(indexPath) as! FeedTableViewCell
+                if(origin == CGPointZero){
+                    origin = cell.cellView.frame.origin
+                }
+                var original = cell.cellView.frame.origin
+                var cellTranslation = recognizer.translationInView(self.tableView)
+                cell.cellView.frame = CGRect(x: original.x + cellTranslation.x, y: original.y, width: cell.cellView.frame.width, height: cell.cellView.frame.height)
+                translation = CGPoint(x: translation.x + cellTranslation.x, y: translation.y + cellTranslation.y)
+                println(translation)
+                recognizer.setTranslation(CGPointZero, inView: self.tableView)
+            }
         }
         if(recognizer.state == UIGestureRecognizerState.Ended){
             indexPath = self.tableView.indexPathForRowAtPoint(startLocation)
@@ -119,6 +130,11 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
                     }))
                     alert.addAction(UIAlertAction(title: "No", style: .Default, handler: { (action: UIAlertAction!) -> Void in
                         println("OK")
+                        if(indexPath != nil){
+                            var cell = self.tableView.cellForRowAtIndexPath(indexPath) as! FeedTableViewCell
+                            cell.cellView.frame.origin = self.origin
+                        }
+                        
                     }))
                     
                     presentViewController(alert, animated: true, completion: nil)
