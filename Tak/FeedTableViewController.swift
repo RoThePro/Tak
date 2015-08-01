@@ -14,7 +14,7 @@
 import UIKit
 import Parse
 
-class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegate{
+class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegate, UITabBarControllerDelegate{
     
     //Helps query database
     var commit: Commit?
@@ -28,6 +28,8 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tabBarController?.delegate = self
         //Init query helper
         commit = Commit()
         //Gets data from database
@@ -316,7 +318,7 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
                     self.days = sorted(self.days, AscendingNSDate)
                     
                     //tableView.deleteSections(<#sections: NSIndexSet#>, withRowAnimation: <#UITableViewRowAnimation#>)
-                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
                     tableView.reloadData()
                     tableView.endUpdates()
                 } else {
@@ -341,6 +343,16 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
             svc.commitment=currentCommitment!
         }
     }
+    
+    func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
+        if(viewController is NavigationController){
+            self.performSegueWithIdentifier("Add", sender: nil)
+            return false
+        }else{
+            return true
+        }
+    }
+
     
     @IBAction func unwindToSegue(segue: UIStoryboardSegue) {
         
@@ -382,3 +394,5 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
     }
     
 }
+
+

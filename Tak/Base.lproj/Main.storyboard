@@ -17,19 +17,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tKP-f8-t4b">
-                                <rect key="frame" x="16" y="100" width="150" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tKP-f8-t4b">
+                                <rect key="frame" x="16" y="100" width="568" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="g9F-0Z-V3Z"/>
+                                    <constraint firstAttribute="height" constant="25" id="DvB-hK-kJx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="1" maxValue="3" translatesAutoresizingMaskIntoConstraints="NO" id="Qfp-hq-q8g">
-                                <rect key="frame" x="452" y="100" width="118" height="31"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LKg-KX-dDw">
+                                <rect key="frame" x="16" y="155" width="568" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="114" id="KS2-AL-4hg"/>
+                                    <constraint firstAttribute="height" constant="25" id="qgb-Ef-7ly"/>
+                                    <constraint firstAttribute="width" constant="568" id="zwZ-0C-DIn"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="zwZ-0C-DIn"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Date" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xte-OG-b9R">
+                                <rect key="frame" x="16" y="209" width="568" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="rrb-j4-hpl"/>
+                                    <constraint firstAttribute="width" constant="150" id="xW7-9S-txL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="xW7-9S-txL"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="datePicker:" destination="QKC-iO-7SR" eventType="editingDidBegin" id="0ch-RJ-RNp"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Important" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZO-Kk-lDK">
+                                <rect key="frame" x="25" y="315" width="58.5" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Very Important" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LwJ-7L-T7D">
+                                <rect key="frame" x="496" y="315" width="88" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="1" maxValue="3" translatesAutoresizingMaskIntoConstraints="NO" id="Qfp-hq-q8g">
+                                <rect key="frame" x="51" y="261" width="502" height="31"/>
                                 <color key="minimumTrackTintColor" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="thumbTintColor" red="1" green="0.32156862749999998" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -37,52 +77,47 @@
                                     <action selector="impAction:" destination="QKC-iO-7SR" eventType="valueChanged" id="Ecg-q5-55f"/>
                                 </connections>
                             </slider>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LKg-KX-dDw">
-                                <rect key="frame" x="16" y="168" width="150" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xte-OG-b9R">
-                                <rect key="frame" x="16" y="235" width="150" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="datePicker:" destination="QKC-iO-7SR" eventType="editingDidBegin" id="0ch-RJ-RNp"/>
-                                </connections>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsr-iW-M96">
-                                <rect key="frame" x="445" y="150" width="118" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="NnK-ew-ydE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="LKg-KX-dDw" firstAttribute="leading" secondItem="tKP-f8-t4b" secondAttribute="leading" id="Cao-pV-Oa3"/>
-                            <constraint firstItem="Xte-OG-b9R" firstAttribute="leading" secondItem="LKg-KX-dDw" secondAttribute="leading" id="EmI-TG-UME"/>
-                            <constraint firstItem="tsr-iW-M96" firstAttribute="top" secondItem="Qfp-hq-q8g" secondAttribute="bottom" constant="20" id="Q2p-w5-3Bg"/>
-                            <constraint firstItem="tsr-iW-M96" firstAttribute="centerX" secondItem="Qfp-hq-q8g" secondAttribute="centerX" constant="-7" id="Uh7-Nd-r2J"/>
-                            <constraint firstItem="Xte-OG-b9R" firstAttribute="top" secondItem="LKg-KX-dDw" secondAttribute="bottom" constant="37" id="V2X-ba-7cO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="tsr-iW-M96" secondAttribute="trailing" constant="21" id="Xj4-xg-ErP"/>
-                            <constraint firstItem="tKP-f8-t4b" firstAttribute="centerX" secondItem="LKg-KX-dDw" secondAttribute="centerX" id="crv-8a-rmV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Qfp-hq-q8g" secondAttribute="trailing" constant="16" id="kHu-46-dOm"/>
-                            <constraint firstItem="tKP-f8-t4b" firstAttribute="top" secondItem="ENQ-65-Odb" secondAttribute="topMargin" constant="100" id="lrl-Xu-BIM"/>
-                            <constraint firstItem="tKP-f8-t4b" firstAttribute="leading" secondItem="ENQ-65-Odb" secondAttribute="leadingMargin" id="oqE-P3-XJm"/>
-                            <constraint firstItem="Qfp-hq-q8g" firstAttribute="top" secondItem="tKP-f8-t4b" secondAttribute="top" id="s6l-eJ-37H"/>
-                            <constraint firstItem="Xte-OG-b9R" firstAttribute="trailing" secondItem="LKg-KX-dDw" secondAttribute="trailing" id="vQb-FL-2aE"/>
-                            <constraint firstItem="LKg-KX-dDw" firstAttribute="top" secondItem="tKP-f8-t4b" secondAttribute="bottom" constant="38" id="z0F-Rt-haa"/>
+                            <constraint firstItem="LKg-KX-dDw" firstAttribute="trailing" secondItem="ENQ-65-Odb" secondAttribute="trailingMargin" id="2qG-3K-8hI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qfp-hq-q8g" secondAttribute="trailing" constant="33" id="7pv-4K-9zM"/>
+                            <constraint firstItem="LwJ-7L-T7D" firstAttribute="top" secondItem="Qfp-hq-q8g" secondAttribute="bottom" constant="24" id="Aew-Vq-ypu"/>
+                            <constraint firstItem="LKg-KX-dDw" firstAttribute="leading" secondItem="ENQ-65-Odb" secondAttribute="leadingMargin" id="Exa-4c-XQt"/>
+                            <constraint firstItem="Qfp-hq-q8g" firstAttribute="leading" secondItem="ENQ-65-Odb" secondAttribute="leadingMargin" constant="37" id="GGA-Hi-jBL"/>
+                            <constraint firstItem="Xte-OG-b9R" firstAttribute="trailing" secondItem="ENQ-65-Odb" secondAttribute="trailingMargin" id="KmY-g4-ukG"/>
+                            <constraint firstItem="Xte-OG-b9R" firstAttribute="leading" secondItem="LKg-KX-dDw" secondAttribute="leading" id="Tv5-rl-V2o"/>
+                            <constraint firstItem="Xte-OG-b9R" firstAttribute="trailing" secondItem="LKg-KX-dDw" secondAttribute="trailing" id="VzO-re-KXQ"/>
+                            <constraint firstItem="tKP-f8-t4b" firstAttribute="leading" secondItem="ENQ-65-Odb" secondAttribute="leadingMargin" id="YyC-Kq-Uch"/>
+                            <constraint firstItem="Xte-OG-b9R" firstAttribute="top" secondItem="LKg-KX-dDw" secondAttribute="bottom" constant="29" id="dZh-VR-S7n"/>
+                            <constraint firstItem="JZO-Kk-lDK" firstAttribute="leading" secondItem="ENQ-65-Odb" secondAttribute="leadingMargin" constant="9" id="kEz-bt-H6o"/>
+                            <constraint firstItem="JZO-Kk-lDK" firstAttribute="top" secondItem="Qfp-hq-q8g" secondAttribute="bottom" constant="24" id="kQi-n0-cBz"/>
+                            <constraint firstItem="LKg-KX-dDw" firstAttribute="top" secondItem="tKP-f8-t4b" secondAttribute="bottom" constant="30" id="ll8-Fj-N5E"/>
+                            <constraint firstItem="tKP-f8-t4b" firstAttribute="top" secondItem="m8r-TW-AbY" secondAttribute="bottom" constant="36" id="q3m-T0-WdQ"/>
+                            <constraint firstItem="Xte-OG-b9R" firstAttribute="leading" secondItem="ENQ-65-Odb" secondAttribute="leadingMargin" id="qGx-lr-j9o"/>
+                            <constraint firstItem="tKP-f8-t4b" firstAttribute="trailing" secondItem="ENQ-65-Odb" secondAttribute="trailingMargin" id="qlg-he-oVq"/>
+                            <constraint firstItem="Qfp-hq-q8g" firstAttribute="top" secondItem="Xte-OG-b9R" secondAttribute="bottom" constant="27" id="siE-oh-FXc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LwJ-7L-T7D" secondAttribute="trailing" id="sjC-Ag-qiD"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Tv5-rl-V2o"/>
+                                <exclude reference="VzO-re-KXQ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="New Item" id="lHZ-Ia-G4H">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bnd-2k-1FK">
+                            <color key="tintColor" red="1" green="0.32156862749999998" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="SCf-Yh-xcl" kind="presentation" id="MQ3-fa-riJ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="oTk-e6-dlG">
                             <color key="tintColor" red="1" green="0.32156862749999998" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="SCf-Yh-xcl" kind="presentation" identifier="Save" id="lsp-IL-KPo"/>
+                                <segue destination="SCf-Yh-xcl" kind="showDetail" identifier="Save" id="lsp-IL-KPo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -91,7 +126,6 @@
                         <outlet property="dateField" destination="Xte-OG-b9R" id="Q3A-Bc-gbo"/>
                         <outlet property="descField" destination="LKg-KX-dDw" id="R3i-ux-X4M"/>
                         <outlet property="imp" destination="Qfp-hq-q8g" id="b0Z-sj-86a"/>
-                        <outlet property="impValue" destination="tsr-iW-M96" id="K0g-TK-iOh"/>
                         <outlet property="titleField" destination="tKP-f8-t4b" id="6yl-cH-8ew"/>
                     </connections>
                 </viewController>
@@ -154,6 +188,7 @@
                     <connections>
                         <outlet property="tableView" destination="zhB-Jz-qxt" id="QAb-xm-fo1"/>
                         <segue destination="YD0-FA-dfU" kind="show" identifier="feedViewSegue" id="BQh-5v-27u"/>
+                        <segue destination="U4a-re-QRw" kind="presentation" identifier="Add" id="Qqq-xk-Jfo"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pbh-rX-ruo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -520,7 +555,7 @@
         <!--Add-->
         <scene sceneID="Kvr-Hd-njD">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="U4a-re-QRw" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="U4a-re-QRw" customClass="NavigationController" customModule="Tak" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Add" id="HkS-Ca-fma"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7BY-du-dTY">
@@ -543,5 +578,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="lsp-IL-KPo"/>
+        <segue reference="Qqq-xk-Jfo"/>
     </inferredMetricsTieBreakers>
 </document>

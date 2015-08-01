@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import FBSDKCoreKit
 import FBSDKLoginKit
+import QuartzCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -44,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UILabel.appearance().textColor = UIColor.whiteColor()
         
-        UITextField.appearance().backgroundColor = UIColor(red: 6/10, green: 6/10, blue: 6/10, alpha: 1.0)
+        UITextField.appearance().backgroundColor = UIColor.clearColor()
         
         UITabBar.appearance().barTintColor = UIColor(red: 1/10, green: 1/10, blue: 1/10, alpha: 1.0)
         

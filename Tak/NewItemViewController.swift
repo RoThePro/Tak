@@ -11,62 +11,63 @@ import Parse
 
 class NewItemViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var dateField: UITextField! {didSet { dateField.delegate = self } }
-    @IBOutlet weak var titleField: UITextField! { didSet { titleField.delegate = self } }
-    @IBOutlet weak var descField: UITextField! { didSet { descField.delegate = self } }
+    @IBOutlet weak var dateField: UITextField! {didSet { dateField.delegate = self; setTextFieldStyle(dateField)} }
+    @IBOutlet weak var titleField: UITextField! { didSet { titleField.delegate = self; setTextFieldStyle(titleField)} }
+    @IBOutlet weak var descField: UITextField! { didSet { descField.delegate = self; setTextFieldStyle(descField)} }
     @IBOutlet weak var imp: UISlider!
-    @IBOutlet weak var impValue: UILabel!
     @IBAction func impAction(sender: AnyObject) {
         imp.value=round(imp.value)
-        impValue.text="Imp Factor: \(imp.value)"
     }
     var commit: Commit?
     //var state: String?
     var commitment: Commitment?
     var date: NSDate?
     
+    func setTextFieldStyle(textField: UITextField){
+        let border = CALayer()
+        let width = CGFloat(1.0)
+        border.borderColor = UIColor.whiteColor().CGColor
+        border.frame = CGRect(x: 0, y: textField.frame.size.height - width, width:  textField.frame.size.width, height: textField.frame.size.height)
+        
+        border.borderWidth = width
+        textField.layer.borderColor = UIColor.clearColor().CGColor
+        textField.layer.addSublayer(border)
+        textField.layer.masksToBounds = true
+    }
+    
     @IBAction func datePicker(sender: UITextField) {
         var datePickerView:UIDatePicker = UIDatePicker()
-        
         datePickerView.datePickerMode = UIDatePickerMode.Date
         datePickerView.minimumDate = NSDate()
-        
-        datePickerView.setValue(UIColor.whiteColor(), forKeyPath: "textColor")
-        
         if(date != nil){
             datePickerView.date = date!
         }
-        
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+        date = NSDate()
+        dateField.text = dateFormatter.stringFromDate(date!)
         sender.inputView = datePickerView
-        
-        
         datePickerView.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
     }
     
     func datePickerValueChanged(sender:UIDatePicker) {
-        
         var dateFormatter = NSDateFormatter()
-        
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
-        
         dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
-        
         date = sender.date
-        
         dateField.text = dateFormatter.stringFromDate(sender.date)
-        
-        
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         commit=Commit()
         
         self.view.backgroundColor = UIColor(red: 4/10, green:4/10, blue:4/10, alpha:1.0)
         
-        impValue.text="Imp Factor: \(imp.value)"
-        
         // Do any additional setup after loading the view.
     }
+
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
