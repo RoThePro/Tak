@@ -14,6 +14,7 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var tableView: UITableView!
     
     var userHelper: User?
     
@@ -26,6 +27,9 @@ class ProfileViewController: UIViewController {
             
             self.view.backgroundColor = UIColor(red: 4/10, green:4/10, blue:4/10, alpha:1.0)
         })
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         
         super.viewDidLoad()
         
@@ -55,4 +59,14 @@ class ProfileViewController: UIViewController {
     }
     */
     
+}
+
+extension ProfileViewController: UITableViewDelegate{
+    //tableView
+}
+
+extension ProfileViewController: UITableViewDataSource{
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
 }
