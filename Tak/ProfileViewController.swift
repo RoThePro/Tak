@@ -23,6 +23,7 @@ class ProfileViewController: UIViewController {
         userHelper?.getUser({ (result: PFObject?, error: NSError?) -> Void in
             self.profileImageView.image = UIImage(data: result!["picture"]!.getData()!)
             self.nameLabel.text = result!["name"] as? String
+            
             self.setPictureDesign(self.profileImageView)
             
             self.view.backgroundColor = UIColor(red: 4/10, green:4/10, blue:4/10, alpha:1.0)
@@ -62,11 +63,21 @@ class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController: UITableViewDelegate{
-    //tableView
+    
 }
 
 extension ProfileViewController: UITableViewDataSource{
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("ProfileCell", forIndexPath: indexPath) as! ProfileTableViewCell
+        
+        return cell
     }
 }

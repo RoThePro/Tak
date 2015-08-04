@@ -36,6 +36,7 @@
 		1C14CC9E1B5976CC00112E6B /* Commitment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C14CC981B5976CC00112E6B /* Commitment.swift */; };
 		1C14CC9F1B5976CC00112E6B /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C14CC991B5976CC00112E6B /* FeedTableViewCell.swift */; };
 		1C14CCA11B59862F00112E6B /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C14CCA01B59862F00112E6B /* ContentViewController.swift */; };
+		1C1EA36C1B6FECB0002F95E2 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1EA36B1B6FECB0002F95E2 /* ProfileTableViewCell.swift */; };
 		1C8FE6AE1B601389009EDCEB /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C8FE6AC1B601389009EDCEB /* Accounts.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		1C8FE6AF1B601389009EDCEB /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C8FE6AD1B601389009EDCEB /* Social.framework */; };
 		1CBBE92F1B5EAB84002064AE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBBE92E1B5EAB84002064AE /* LoginViewController.swift */; };
@@ -91,6 +92,7 @@
 		1C14CC981B5976CC00112E6B /* Commitment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commitment.swift; sourceTree = "<group>"; };
 		1C14CC991B5976CC00112E6B /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		1C14CCA01B59862F00112E6B /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		1C1EA36B1B6FECB0002F95E2 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		1C8FE6AC1B601389009EDCEB /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		1C8FE6AD1B601389009EDCEB /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		1CBBE92E1B5EAB84002064AE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				1C14CC961B5976CC00112E6B /* CommitmentHelper.swift */,
 				1CCAB4BF1B697541000DFA49 /* UserHelper.swift */,
 				1C14CC991B5976CC00112E6B /* FeedTableViewCell.swift */,
+				1C1EA36B1B6FECB0002F95E2 /* ProfileTableViewCell.swift */,
 				1C14CCA01B59862F00112E6B /* ContentViewController.swift */,
 				1C14CC501B5974D300112E6B /* AppDelegate.swift */,
 				1CBBE9301B5EB593002064AE /* ProfileViewController.swift */,
@@ -350,6 +353,7 @@
 				1C14CC9A1B5976CC00112E6B /* FeedCellViewController.swift in Sources */,
 				1C14CC9F1B5976CC00112E6B /* FeedTableViewCell.swift in Sources */,
 				1CCAB4C01B697541000DFA49 /* UserHelper.swift in Sources */,
+				1C1EA36C1B6FECB0002F95E2 /* ProfileTableViewCell.swift in Sources */,
 				1C14CC531B5974D300112E6B /* ViewController.swift in Sources */,
 				1C14CC9E1B5976CC00112E6B /* Commitment.swift in Sources */,
 				1CEC3E2E1B6C459900030D7A /* NavigationController.swift in Sources */,
@@ -499,7 +503,7 @@
 				INFOPLIST_FILE = Tak/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "7d0991d3-91a2-4200-9460-a73e15393428";
 				SWIFT_OBJC_BRIDGING_HEADER = /Users/Rohan/Documents/Tak/Tak/BridgingHeader.h;
 			};
 			name = Debug;
@@ -518,7 +522,7 @@
 				INFOPLIST_FILE = Tak/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "7d0991d3-91a2-4200-9460-a73e15393428";
 				SWIFT_OBJC_BRIDGING_HEADER = /Users/Rohan/Documents/Tak/Tak/BridgingHeader.h;
 			};
 			name = Release;
