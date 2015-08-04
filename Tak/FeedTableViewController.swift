@@ -28,9 +28,7 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        println(PFCloud.callFunction("Twitter", withParameters: nil))
-        
+                
         self.tabBarController?.delegate = self
         //Init query helper
         commit = Commit()
