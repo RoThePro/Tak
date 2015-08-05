@@ -12,6 +12,11 @@ import QuartzCore
 
 class ProfileViewController: UIViewController {
     
+    @IBAction func logoutAction(sender: AnyObject) {
+        PFUser.logOutInBackgroundWithBlock { (error) -> Void in
+            self.performSegueWithIdentifier("logoutSegue", sender: self)
+        }
+    }
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!

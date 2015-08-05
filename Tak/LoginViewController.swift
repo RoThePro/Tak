@@ -14,6 +14,7 @@ import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var logo: UIImageView!
     @IBAction func loginWithFacebookAction(sender: AnyObject) {
         
         var permissions = ["public_profile","email"]
@@ -63,11 +64,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        self.view.backgroundColor = UIColor(red: 4/10, green:4/10, blue:4/10, alpha:1.0)
-        
-        
+        //logo.set
         // Do any additional setup after loading the view.
     }
     
