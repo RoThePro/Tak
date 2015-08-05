@@ -45,6 +45,14 @@ class Commit{
         }
     }
     
+    func procrastinatedCommitments(callback: PFArrayResultBlock){
+        var query = PFQuery(className: className)
+        query.orderByAscending("date")
+        query.whereKey("user", equalTo: user!)
+        query.whereKey("procrastinated", equalTo: true)
+        query.findObjectsInBackgroundWithBlock(callback)
+    }
+    
     func getCommitments(callback: PFArrayResultBlock) {
         var query = PFQuery(className:className)
         query.orderByDescending("createdAt")

@@ -45,11 +45,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 
         UINavigationBar.appearance().barTintColor = UIColor(red: 1/10, green: 1/10, blue: 1/10, alpha: 1.0)
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        UINavigationBar.appearance().tintColor = UIColor(red: 251/255, green: 65/255, blue: 73/255, alpha: 1.0)
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont(name: "Avenir Next", size: 20.0)!]
         
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Avenir Next", size: 18.0)!], forState: UIControlState.Normal)
+
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
         
         UILabel.appearance().textColor = UIColor.whiteColor()
+        //UILabel.appearance().font = UIFont(name: "Avenir Next", size: 17.0)
         
         UITextField.appearance().backgroundColor = UIColor.clearColor()
         

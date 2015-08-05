@@ -28,7 +28,7 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         self.tabBarController?.delegate = self
         //Init query helper
         commit = Commit()
@@ -66,138 +66,138 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
         //Makes border between cells clear
         tableView.backgroundColor = UIColor(red: 4/10, green:4/10, blue:4/10, alpha:1.0)
         //tableView.backgroundColor = UIColor.whiteColor()
-        tableView.separatorColor=UIColor.clearColor()
+        tableView.separatorColor=UIColor.whiteColor()
     }
     
     /*func handleAction(recognizer: UIPanGestureRecognizer){
-        var startLocation: CGPoint = recognizer.locationInView(self.tableView)
-        var velocity: CGPoint = recognizer.velocityInView(self.tableView)
-        var indexPath: NSIndexPath!
-        
-        if(recognizer.state == UIGestureRecognizerState.Changed){
-            indexPath = self.tableView.indexPathForRowAtPoint(startLocation)
-            if(indexPath != nil){
-                var cell = self.tableView.cellForRowAtIndexPath(indexPath) as! FeedTableViewCell
-                if(origin == CGPointZero){
-                    origin = cell.cellView.frame.origin
-                }
-                var original = cell.cellView.frame.origin
-                var cellTranslation = recognizer.translationInView(self.tableView)
-                if(cellTranslation.x < 0){
-                    cell.cellView.frame = CGRect(x: original.x + cellTranslation.x + 5, y: original.y, width: cell.cellView.frame.width, height: cell.cellView.frame.height)
-                }
-                recognizer.setTranslation(CGPointZero, inView: self.tableView)
-                if(CGPoint(x: cell.cellView.frame.origin.x - origin.x, y: cell.cellView.frame.origin.y - origin.y).x < -(cell.cellView.frame.width/4)){
-                    var alert: UIAlertController = UIAlertController(title: "Are you sure you want to delete?", message:"", preferredStyle: UIAlertControllerStyle.Alert)
-                    
-                    alert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { (action: UIAlertAction!) -> Void in
-                        self.tableView.beginUpdates()
-                        self.commit?.deleteCommitment(self.testObjects[self.days[indexPath!.section]]![indexPath!.row])
-                        self.commit?.getCommitments({ (results:[AnyObject]?, error:NSError?) -> Void in
-                            if let commitments = results as? [Commitment] {
-                                self.testObjects = Dictionary()
-                                self.days = []
-                                for commitment in commitments{
-                                    self.testObjects[commitment["date"] as! NSDate]=[]
-                                }
-                                for commitment in commitments{
-                                    self.testObjects[commitment["date"] as! NSDate]!.append(commitment)
-                                    self.days.append(commitment["date"] as! NSDate)
-                                }
-                                
-                                func AscendingNSDate(s1: NSDate, s2: NSDate) -> Bool {
-                                    var earlier = s1.earlierDate(s2)
-                                    if earlier == s1 {
-                                        return true
-                                    }
-                                    return false
-                                }
-                                
-                                self.days = sorted(self.days, AscendingNSDate)
-                                
-                                self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Left)
-                                self.tableView.reloadData()
-                                self.tableView.endUpdates()
-                            } else {
-                                println("YOU RETARD")
-                            }
-                        })
-                    }))
-                    alert.addAction(UIAlertAction(title: "No", style: .Default, handler: { (action: UIAlertAction!) -> Void in
-                        println("OK")
-                        if(indexPath != nil){
-                            var cell = self.tableView.cellForRowAtIndexPath(indexPath) as! FeedTableViewCell
-                            cell.cellView.frame.origin = self.origin
-                        }
-                        
-                    }))
-                    
-                    presentViewController(alert, animated: true, completion: nil)
-                }
-            }
-        }
-//        if(recognizer.state == UIGestureRecognizerState.Ended){
-//            indexPath = self.tableView.indexPathForRowAtPoint(startLocation)
-//            if(indexPath != nil){
-//                var finalPoint = CGPointMake(translation.x, translation.y)
-//                if(finalPoint.x < -100){
-//                    var alert: UIAlertController = UIAlertController(title: "Are you sure you want to delete?", message:"", preferredStyle: UIAlertControllerStyle.Alert)
-//                    
-//                    alert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { (action: UIAlertAction!) -> Void in
-//                        self.tableView.beginUpdates()
-//                        self.commit?.deleteCommitment(self.testObjects[self.days[indexPath!.section]]![indexPath!.row])
-//                        self.commit?.getCommitments({ (results:[AnyObject]?, error:NSError?) -> Void in
-//                            if let commitments = results as? [Commitment] {
-//                                self.testObjects = Dictionary()
-//                                self.days = []
-//                                for commitment in commitments{
-//                                    self.testObjects[commitment["date"] as! NSDate]=[]
-//                                }
-//                                for commitment in commitments{
-//                                    self.testObjects[commitment["date"] as! NSDate]!.append(commitment)
-//                                    self.days.append(commitment["date"] as! NSDate)
-//                                }
-//                                
-//                                func AscendingNSDate(s1: NSDate, s2: NSDate) -> Bool {
-//                                    var earlier = s1.earlierDate(s2)
-//                                    if earlier == s1 {
-//                                        return true
-//                                    }
-//                                    return false
-//                                }
-//                                
-//                                self.days = sorted(self.days, AscendingNSDate)
-//                                
-//                                self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Left)
-//                                self.tableView.reloadData()
-//                                self.tableView.endUpdates()
-//                            } else {
-//                                println("YOU RETARD")
-//                            }
-//                        })
-//                    }))
-//                    alert.addAction(UIAlertAction(title: "No", style: .Default, handler: { (action: UIAlertAction!) -> Void in
-//                        println("OK")
-//                        if(indexPath != nil){
-//                            var cell = self.tableView.cellForRowAtIndexPath(indexPath) as! FeedTableViewCell
-//                            cell.cellView.frame.origin = self.origin
-//                        }
-//                        
-//                    }))
-//                    
-//                    presentViewController(alert, animated: true, completion: nil)
-//                    
-//                }else if(finalPoint.x > 100){
-//                    println("Swipe left @\(indexPath!.row)")
-//                }else if(finalPoint.y != 0){
-//                    //self.tableView.removeGestureRecognizer(self.swipe)
-//                }
-//            }else{
-//                println("Select a cell dummy")
-//            }
-//            
-//        }
-        
+    var startLocation: CGPoint = recognizer.locationInView(self.tableView)
+    var velocity: CGPoint = recognizer.velocityInView(self.tableView)
+    var indexPath: NSIndexPath!
+    
+    if(recognizer.state == UIGestureRecognizerState.Changed){
+    indexPath = self.tableView.indexPathForRowAtPoint(startLocation)
+    if(indexPath != nil){
+    var cell = self.tableView.cellForRowAtIndexPath(indexPath) as! FeedTableViewCell
+    if(origin == CGPointZero){
+    origin = cell.cellView.frame.origin
+    }
+    var original = cell.cellView.frame.origin
+    var cellTranslation = recognizer.translationInView(self.tableView)
+    if(cellTranslation.x < 0){
+    cell.cellView.frame = CGRect(x: original.x + cellTranslation.x + 5, y: original.y, width: cell.cellView.frame.width, height: cell.cellView.frame.height)
+    }
+    recognizer.setTranslation(CGPointZero, inView: self.tableView)
+    if(CGPoint(x: cell.cellView.frame.origin.x - origin.x, y: cell.cellView.frame.origin.y - origin.y).x < -(cell.cellView.frame.width/4)){
+    var alert: UIAlertController = UIAlertController(title: "Are you sure you want to delete?", message:"", preferredStyle: UIAlertControllerStyle.Alert)
+    
+    alert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { (action: UIAlertAction!) -> Void in
+    self.tableView.beginUpdates()
+    self.commit?.deleteCommitment(self.testObjects[self.days[indexPath!.section]]![indexPath!.row])
+    self.commit?.getCommitments({ (results:[AnyObject]?, error:NSError?) -> Void in
+    if let commitments = results as? [Commitment] {
+    self.testObjects = Dictionary()
+    self.days = []
+    for commitment in commitments{
+    self.testObjects[commitment["date"] as! NSDate]=[]
+    }
+    for commitment in commitments{
+    self.testObjects[commitment["date"] as! NSDate]!.append(commitment)
+    self.days.append(commitment["date"] as! NSDate)
+    }
+    
+    func AscendingNSDate(s1: NSDate, s2: NSDate) -> Bool {
+    var earlier = s1.earlierDate(s2)
+    if earlier == s1 {
+    return true
+    }
+    return false
+    }
+    
+    self.days = sorted(self.days, AscendingNSDate)
+    
+    self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Left)
+    self.tableView.reloadData()
+    self.tableView.endUpdates()
+    } else {
+    println("YOU RETARD")
+    }
+    })
+    }))
+    alert.addAction(UIAlertAction(title: "No", style: .Default, handler: { (action: UIAlertAction!) -> Void in
+    println("OK")
+    if(indexPath != nil){
+    var cell = self.tableView.cellForRowAtIndexPath(indexPath) as! FeedTableViewCell
+    cell.cellView.frame.origin = self.origin
+    }
+    
+    }))
+    
+    presentViewController(alert, animated: true, completion: nil)
+    }
+    }
+    }
+    //        if(recognizer.state == UIGestureRecognizerState.Ended){
+    //            indexPath = self.tableView.indexPathForRowAtPoint(startLocation)
+    //            if(indexPath != nil){
+    //                var finalPoint = CGPointMake(translation.x, translation.y)
+    //                if(finalPoint.x < -100){
+    //                    var alert: UIAlertController = UIAlertController(title: "Are you sure you want to delete?", message:"", preferredStyle: UIAlertControllerStyle.Alert)
+    //
+    //                    alert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { (action: UIAlertAction!) -> Void in
+    //                        self.tableView.beginUpdates()
+    //                        self.commit?.deleteCommitment(self.testObjects[self.days[indexPath!.section]]![indexPath!.row])
+    //                        self.commit?.getCommitments({ (results:[AnyObject]?, error:NSError?) -> Void in
+    //                            if let commitments = results as? [Commitment] {
+    //                                self.testObjects = Dictionary()
+    //                                self.days = []
+    //                                for commitment in commitments{
+    //                                    self.testObjects[commitment["date"] as! NSDate]=[]
+    //                                }
+    //                                for commitment in commitments{
+    //                                    self.testObjects[commitment["date"] as! NSDate]!.append(commitment)
+    //                                    self.days.append(commitment["date"] as! NSDate)
+    //                                }
+    //
+    //                                func AscendingNSDate(s1: NSDate, s2: NSDate) -> Bool {
+    //                                    var earlier = s1.earlierDate(s2)
+    //                                    if earlier == s1 {
+    //                                        return true
+    //                                    }
+    //                                    return false
+    //                                }
+    //
+    //                                self.days = sorted(self.days, AscendingNSDate)
+    //
+    //                                self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Left)
+    //                                self.tableView.reloadData()
+    //                                self.tableView.endUpdates()
+    //                            } else {
+    //                                println("YOU RETARD")
+    //                            }
+    //                        })
+    //                    }))
+    //                    alert.addAction(UIAlertAction(title: "No", style: .Default, handler: { (action: UIAlertAction!) -> Void in
+    //                        println("OK")
+    //                        if(indexPath != nil){
+    //                            var cell = self.tableView.cellForRowAtIndexPath(indexPath) as! FeedTableViewCell
+    //                            cell.cellView.frame.origin = self.origin
+    //                        }
+    //
+    //                    }))
+    //
+    //                    presentViewController(alert, animated: true, completion: nil)
+    //
+    //                }else if(finalPoint.x > 100){
+    //                    println("Swipe left @\(indexPath!.row)")
+    //                }else if(finalPoint.y != 0){
+    //                    //self.tableView.removeGestureRecognizer(self.swipe)
+    //                }
+    //            }else{
+    //                println("Select a cell dummy")
+    //            }
+    //
+    //        }
+    
     }*/
     
     // MARK: - Table view data source
@@ -236,7 +236,7 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
             return testObjects[days[section]]!.count
         }
         
-        return 0
+        return 1
         
     }
     
@@ -268,7 +268,6 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
                     
                     self.days = sorted(self.days, AscendingNSDate)
                     
-                    //tableView.deleteSections(<#sections: NSIndexSet#>, withRowAnimation: <#UITableViewRowAnimation#>)
                     self.tableView.reloadData()
                     self.tableView.endUpdates()
                 } else {
@@ -281,35 +280,45 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! FeedTableViewCell
         
-        cell.backgroundColor = UIColor.clearColor()
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
-        
-        cell.checkBox.tag = indexPath.row
-        
-        cell.checkBox.removeTarget(self, action: Selector("checkBoxPressed:"), forControlEvents: .TouchUpInside)
-        cell.checkBox.addTarget(self, action: Selector("checkBoxPressed:"), forControlEvents: .TouchUpInside)
-        
-        var object=[Commitment]()
-        if(days.count != 0){
-            //println(indexPath.section)
-            object = testObjects[days[indexPath.section]]!
-        }
-        //println(object)
-        //println(days)
-        
-        cell.titleLabel.text=object[indexPath.row]["title"] as? String
-        cell.descLabel.text=object[indexPath.row]["desc"] as? String
-        var impFactor = object[indexPath.row]["impFactor"]! as! Double
-        
-        switch impFactor{
-        case 1.0:
-            cell.backgroundColor = UIColor(red:0.733, green:0.871, blue:0.984, alpha:1)
-        case 2.0:
-            cell.backgroundColor = UIColor(red:0.129, green:0.588, blue:0.953, alpha:1)
-        case 3.0:
-            cell.backgroundColor = UIColor(red:0.098, green:0.463, blue:0.824, alpha:1)
-        default:
-            cell.backgroundColor = UIColor.whiteColor()
+        if(testObjects.isEmpty){
+            cell.backgroundColor = UIColor.clearColor()
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.titleLabel.text = "No Tasks"
+            cell.descLabel.text = "Add some to get started"
+            cell.checkBox.hidden = true
+        }else{
+            
+            cell.backgroundColor = UIColor.clearColor()
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            
+            cell.checkBox.tag = indexPath.row
+            cell.checkBox.hidden = false
+            
+            cell.checkBox.removeTarget(self, action: Selector("checkBoxPressed:"), forControlEvents: .TouchUpInside)
+            cell.checkBox.addTarget(self, action: Selector("checkBoxPressed:"), forControlEvents: .TouchUpInside)
+            
+            var object=[Commitment]()
+            if(days.count != 0){
+                //println(indexPath.section)
+                object = testObjects[days[indexPath.section]]!
+            }
+            //println(object)
+            //println(days)
+            
+            cell.titleLabel.text=object[indexPath.row]["title"] as? String
+            cell.descLabel.text=object[indexPath.row]["desc"] as? String
+            var impFactor = object[indexPath.row]["impFactor"]! as! Double
+            
+            switch impFactor{
+            case 1.0:
+                cell.backgroundColor = UIColor(red:0.733, green:0.871, blue:0.984, alpha:1)
+            case 2.0:
+                cell.backgroundColor = UIColor(red:0.129, green:0.588, blue:0.953, alpha:1)
+            case 3.0:
+                cell.backgroundColor = UIColor(red:0.098, green:0.463, blue:0.824, alpha:1)
+            default:
+                cell.backgroundColor = UIColor.whiteColor()
+            }
         }
         
         return cell
@@ -327,11 +336,6 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
     }
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
-        
-        var editAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "Edit" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-            self.currentCommitment = self.testObjects[self.days[indexPath.section]]![indexPath.row]
-            //self.performSegueWithIdentifier("editCommitment", sender: self)
-        })
         
         var deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             tableView.beginUpdates()
@@ -359,7 +363,6 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
                     self.days = sorted(self.days, AscendingNSDate)
                     
                     //tableView.deleteSections(<#sections: NSIndexSet#>, withRowAnimation: <#UITableViewRowAnimation#>)
-                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
                     tableView.reloadData()
                     tableView.endUpdates()
                 } else {
@@ -367,14 +370,19 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
                 }
             })
         })
-        editAction.backgroundColor=UIColor.blueColor()
-        return [deleteAction, editAction]
-        //return nil
+        if(!testObjects.isEmpty){
+            return [deleteAction]
+            println("Why")
+        }else{
+          return nil
+        }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        currentCommitment = self.testObjects[self.days[indexPath.section]]![indexPath.row]
-        self.performSegueWithIdentifier("feedViewSegue", sender: self)
+        if(!testObjects.isEmpty){
+            currentCommitment = self.testObjects[self.days[indexPath.section]]![indexPath.row]
+            self.performSegueWithIdentifier("feedViewSegue", sender: self)
+        }
     }
     
     
@@ -393,15 +401,15 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
             return true
         }
     }
-
+    
     
     @IBAction func unwindToSegue(segue: UIStoryboardSegue) {
         
         if let identifier = segue.identifier {
             switch identifier{
             case "Save":
-                let source = segue.sourceViewController as! NewItemViewController
-
+                println("HIIIIII")
+                //let source = segue.sourceViewController as! FeedCellViewController
                 commit?.getCommitments({ (results:[AnyObject]?, error:NSError?) -> Void in
                     if let commitments = results as? [Commitment] {
                         self.testObjects = Dictionary()

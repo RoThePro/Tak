@@ -21,14 +21,64 @@ class FeedCellViewController: UIViewController, UITextFieldDelegate {
     }
     
     var commitment: Commitment?
+    var commit: Commit?
+    var date: NSDate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        commit = Commit()
         //println(test)
+        if(commitment != nil){
+            titleField.text = commitment!.title
+            descField.text = commitment!.desc
+            date = commitment!.date
+            var dateFormatter = NSDateFormatter()
+            dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+            dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+            dateField.text = dateFormatter.stringFromDate(commitment!.date!)
+            imp.value = commitment!.impFactor as! Float
+        }
         
         self.view.backgroundColor = UIColor(red: 4/10, green:4/10, blue:4/10, alpha:1.0)
 
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func datePicker(sender: UITextField) {
+        var datePickerView:UIDatePicker = UIDatePicker()
+        datePickerView.datePickerMode = UIDatePickerMode.Date
+        datePickerView.minimumDate = NSDate()
+        if(date != nil){
+            datePickerView.date = date!
+        }
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+        date = NSDate()
+        dateField.text = dateFormatter.stringFromDate(date!)
+        sender.inputView = datePickerView
+        datePickerView.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    func datePickerValueChanged(sender:UIDatePicker) {
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+        date = sender.date
+        dateField.text = dateFormatter.stringFromDate(sender.date)
+    }
+    
+    @IBAction func saveButtonClicked(sender: AnyObject) {
+        if(!titleField.text.isEmpty && !descField.text.isEmpty && !dateField.text.isEmpty){
+            self.performSegueWithIdentifier("Save", sender: nil)
+        }else{
+            var alert: UIAlertController = UIAlertController(title: "Empty Fields", message:"Please enter values for Title, Description and Date", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) -> Void in
+                println("OK")
+            }))
+            
+            presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,14 +99,15 @@ class FeedCellViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    /*
+    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+        if(segue.identifier=="Save"){
+            commit!.editCommitment(titleField.text, desc: descField.text, imp: imp.value as NSNumber, date: date!, commit: commitment!)
+        }
     }
-    */
+
     
 }
