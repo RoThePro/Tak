@@ -59,14 +59,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1C14CC4B1B5974D300112E6B /* Tak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tak.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C14CC4B1B5974D300112E6B /* Fyn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fyn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C14CC4F1B5974D300112E6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C14CC501B5974D300112E6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C14CC521B5974D300112E6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1C14CC551B5974D300112E6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1C14CC571B5974D300112E6B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1C14CC5A1B5974D300112E6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		1C14CC601B5974D300112E6B /* TakTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TakTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C14CC601B5974D300112E6B /* FynTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FynTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C14CC651B5974D300112E6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C14CC661B5974D300112E6B /* TakTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakTests.swift; sourceTree = "<group>"; };
 		1C14CC711B59751A00112E6B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -155,8 +155,8 @@
 		1C14CC4C1B5974D300112E6B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1C14CC4B1B5974D300112E6B /* Tak.app */,
-				1C14CC601B5974D300112E6B /* TakTests.xctest */,
+				1C14CC4B1B5974D300112E6B /* Fyn.app */,
+				1C14CC601B5974D300112E6B /* FynTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -252,9 +252,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1C14CC4A1B5974D300112E6B /* Tak */ = {
+		1C14CC4A1B5974D300112E6B /* Fyn */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1C14CC6A1B5974D300112E6B /* Build configuration list for PBXNativeTarget "Tak" */;
+			buildConfigurationList = 1C14CC6A1B5974D300112E6B /* Build configuration list for PBXNativeTarget "Fyn" */;
 			buildPhases = (
 				1C14CC471B5974D300112E6B /* Sources */,
 				1C14CC481B5974D300112E6B /* Frameworks */,
@@ -264,14 +264,14 @@
 			);
 			dependencies = (
 			);
-			name = Tak;
+			name = Fyn;
 			productName = Tak;
-			productReference = 1C14CC4B1B5974D300112E6B /* Tak.app */;
+			productReference = 1C14CC4B1B5974D300112E6B /* Fyn.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1C14CC5F1B5974D300112E6B /* TakTests */ = {
+		1C14CC5F1B5974D300112E6B /* FynTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1C14CC6D1B5974D300112E6B /* Build configuration list for PBXNativeTarget "TakTests" */;
+			buildConfigurationList = 1C14CC6D1B5974D300112E6B /* Build configuration list for PBXNativeTarget "FynTests" */;
 			buildPhases = (
 				1C14CC5C1B5974D300112E6B /* Sources */,
 				1C14CC5D1B5974D300112E6B /* Frameworks */,
@@ -282,9 +282,9 @@
 			dependencies = (
 				1C14CC621B5974D300112E6B /* PBXTargetDependency */,
 			);
-			name = TakTests;
+			name = FynTests;
 			productName = TakTests;
-			productReference = 1C14CC601B5974D300112E6B /* TakTests.xctest */;
+			productReference = 1C14CC601B5974D300112E6B /* FynTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -306,7 +306,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1C14CC461B5974D300112E6B /* Build configuration list for PBXProject "Tak" */;
+			buildConfigurationList = 1C14CC461B5974D300112E6B /* Build configuration list for PBXProject "Fyn" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -319,8 +319,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1C14CC4A1B5974D300112E6B /* Tak */,
-				1C14CC5F1B5974D300112E6B /* TakTests */,
+				1C14CC4A1B5974D300112E6B /* Fyn */,
+				1C14CC5F1B5974D300112E6B /* FynTests */,
 			);
 		};
 /* End PBXProject section */
@@ -381,7 +381,7 @@
 /* Begin PBXTargetDependency section */
 		1C14CC621B5974D300112E6B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1C14CC4A1B5974D300112E6B /* Tak */;
+			target = 1C14CC4A1B5974D300112E6B /* Fyn */;
 			targetProxy = 1C14CC611B5974D300112E6B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -493,7 +493,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Balaji Venkateswaran (6XWSSJ43GU)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -502,8 +502,8 @@
 				);
 				INFOPLIST_FILE = Tak/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7d0991d3-91a2-4200-9460-a73e15393428";
+				PRODUCT_NAME = Fyn;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = /Users/Rohan/Documents/Tak/Tak/BridgingHeader.h;
 			};
 			name = Debug;
@@ -512,7 +512,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Balaji Venkateswaran (6XWSSJ43GU)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -521,8 +521,8 @@
 				);
 				INFOPLIST_FILE = Tak/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7d0991d3-91a2-4200-9460-a73e15393428";
+				PRODUCT_NAME = Fyn;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = /Users/Rohan/Documents/Tak/Tak/BridgingHeader.h;
 			};
 			name = Release;
@@ -541,7 +541,7 @@
 				);
 				INFOPLIST_FILE = TakTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FynTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tak.app/Tak";
 			};
 			name = Debug;
@@ -556,7 +556,7 @@
 				);
 				INFOPLIST_FILE = TakTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FynTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tak.app/Tak";
 			};
 			name = Release;
@@ -564,7 +564,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1C14CC461B5974D300112E6B /* Build configuration list for PBXProject "Tak" */ = {
+		1C14CC461B5974D300112E6B /* Build configuration list for PBXProject "Fyn" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1C14CC681B5974D300112E6B /* Debug */,
@@ -573,7 +573,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1C14CC6A1B5974D300112E6B /* Build configuration list for PBXNativeTarget "Tak" */ = {
+		1C14CC6A1B5974D300112E6B /* Build configuration list for PBXNativeTarget "Fyn" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1C14CC6B1B5974D300112E6B /* Debug */,
@@ -582,7 +582,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1C14CC6D1B5974D300112E6B /* Build configuration list for PBXNativeTarget "TakTests" */ = {
+		1C14CC6D1B5974D300112E6B /* Build configuration list for PBXNativeTarget "FynTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1C14CC6E1B5974D300112E6B /* Debug */,

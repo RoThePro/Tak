@@ -56,6 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //UILabel.appearance().font = UIFont(name: "Avenir Next", size: 17.0)
         
         UITextField.appearance().backgroundColor = UIColor.clearColor()
+        UITextField.appearance().font = UIFont(name: "Avenir Next", size: 15.0)
         
         UITabBar.appearance().barTintColor = UIColor(red: 1/10, green: 1/10, blue: 1/10, alpha: 1.0)
         

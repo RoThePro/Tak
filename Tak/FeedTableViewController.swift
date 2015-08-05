@@ -372,7 +372,6 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
         })
         if(!testObjects.isEmpty){
             return [deleteAction]
-            println("Why")
         }else{
           return nil
         }

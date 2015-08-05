@@ -3,19 +3,21 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "Contacts Filled-25.png"
+      "filename" : "Profile.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "Profile@2x.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "Profile@3x.png"
     }
   ],
   "info" : {
     "version" : 1,
-    "author" : "xcode"
+    "author" : "silver-ux"
   }
 }
