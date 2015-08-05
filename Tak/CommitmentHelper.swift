@@ -36,6 +36,15 @@ class Commit{
         commitment.save()
     }
     
+    func finishCommitment(commit: Commitment){
+        var query = PFQuery(className: className)
+        var commitment = query.getObjectWithId(commit.objectId!)
+        if let commitment = commitment{
+            commitment.removeObjectForKey("deadline")
+            commitment.save()
+        }
+    }
+    
     func getCommitments(callback: PFArrayResultBlock) {
         var query = PFQuery(className:className)
         query.orderByDescending("createdAt")

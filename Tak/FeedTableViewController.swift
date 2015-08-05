@@ -64,7 +64,6 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
         
         
         //Makes border between cells clear
-        tableView.bounces = false
         tableView.backgroundColor = UIColor(red: 4/10, green:4/10, blue:4/10, alpha:1.0)
         //tableView.backgroundColor = UIColor.whiteColor()
         tableView.separatorColor=UIColor.clearColor()
@@ -241,12 +240,54 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
         
     }
     
+    @IBAction func checkBoxPressed(sender: AnyObject) {
+        println("Button for cell was tapped: \(sender)")
+        
+        if let cell = sender.superview!!.superview as? UITableViewCell {
+            let indexPath = tableView.indexPathForCell(cell)
+            self.commit?.finishCommitment(self.testObjects[self.days[indexPath!.section]]![indexPath!.row])
+            self.commit?.getCommitments({ (results:[AnyObject]?, error:NSError?) -> Void in
+                if let commitments = results as? [Commitment] {
+                    self.testObjects = Dictionary()
+                    self.days = []
+                    for commitment in commitments{
+                        self.testObjects[commitment["date"] as! NSDate]=[]
+                    }
+                    for commitment in commitments{
+                        self.testObjects[commitment["date"] as! NSDate]!.append(commitment)
+                        self.days.append(commitment["date"] as! NSDate)
+                    }
+                    
+                    func AscendingNSDate(s1: NSDate, s2: NSDate) -> Bool {
+                        var earlier = s1.earlierDate(s2)
+                        if earlier == s1 {
+                            return true
+                        }
+                        return false
+                    }
+                    
+                    self.days = sorted(self.days, AscendingNSDate)
+                    
+                    //tableView.deleteSections(<#sections: NSIndexSet#>, withRowAnimation: <#UITableViewRowAnimation#>)
+                    self.tableView.reloadData()
+                    self.tableView.endUpdates()
+                } else {
+                    println("YOU RETARD")
+                }
+            })
+        }
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! FeedTableViewCell
         
         cell.backgroundColor = UIColor.clearColor()
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         
+        cell.checkBox.tag = indexPath.row
+        
+        cell.checkBox.removeTarget(self, action: Selector("checkBoxPressed:"), forControlEvents: .TouchUpInside)
+        cell.checkBox.addTarget(self, action: Selector("checkBoxPressed:"), forControlEvents: .TouchUpInside)
         
         var object=[Commitment]()
         if(days.count != 0){

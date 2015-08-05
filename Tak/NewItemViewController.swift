@@ -11,6 +11,18 @@ import Parse
 
 class NewItemViewController: UIViewController, UITextFieldDelegate {
     
+    @IBAction func saveButtonClicked(sender: AnyObject) {
+        if(!titleField.text.isEmpty && !descField.text.isEmpty && !dateField.text.isEmpty){
+            self.performSegueWithIdentifier("Save", sender: nil)
+        }else{
+            var alert: UIAlertController = UIAlertController(title: "Empty Fields", message:"Please enter values for Title, Description and Date", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) -> Void in
+                println("OK")
+            }))
+            
+            presentViewController(alert, animated: true, completion: nil)
+        }
+    }
     @IBOutlet weak var dateField: UITextField! {didSet { dateField.delegate = self; setTextFieldStyle(dateField)} }
     @IBOutlet weak var titleField: UITextField! { didSet { titleField.delegate = self; setTextFieldStyle(titleField)} }
     @IBOutlet weak var descField: UITextField! { didSet { descField.delegate = self; setTextFieldStyle(descField)} }
@@ -92,16 +104,7 @@ class NewItemViewController: UIViewController, UITextFieldDelegate {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if(segue.identifier=="Save"){
-            if(!titleField.text.isEmpty && !descField.text.isEmpty && !dateField.text.isEmpty){
-                commit!.uploadCommitment(titleField.text, desc: descField.text, imp: imp.value as NSNumber, date: date!)
-            }else{
-                var alert: UIAlertController = UIAlertController(title: "Empty Fields", message:"Please enter values for Title, Description and Date", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) -> Void in
-                    println("OK")
-                }))
-                
-                presentViewController(alert, animated: true, completion: nil)
-            }
+            commit!.uploadCommitment(titleField.text, desc: descField.text, imp: imp.value as NSNumber, date: date!)
         }
     }
     

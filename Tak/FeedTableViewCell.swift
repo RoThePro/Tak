@@ -10,5 +10,6 @@ import UIKit
 
 class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var checkBox: UIButton!
     @IBOutlet weak var descLabel: UILabel!
 }

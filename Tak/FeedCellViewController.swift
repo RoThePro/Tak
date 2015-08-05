@@ -8,24 +8,22 @@
 
 import UIKit
 
-class FeedCellViewController: UIViewController {
+class FeedCellViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var titleBar: UINavigationItem!
     
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var descLabel: UILabel!
-    @IBOutlet var impLabel: UILabel!
+    @IBOutlet weak var dateField: UITextField! {didSet { dateField.delegate = self; setTextFieldStyle(dateField)} }
+    @IBOutlet weak var titleField: UITextField! { didSet { titleField.delegate = self; setTextFieldStyle(titleField)} }
+    @IBOutlet weak var descField: UITextField! { didSet { descField.delegate = self; setTextFieldStyle(descField)} }
+    @IBOutlet weak var imp: UISlider!
+    @IBAction func impAction(sender: AnyObject) {
+        imp.value=round(imp.value)
+    }
+    
     var commitment: Commitment?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text=commitment?.title
-        descLabel.text=commitment?.desc
-        impLabel.text="\((commitment?.impFactor)!)"
-        var dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        dateLabel.text = dateFormatter.stringFromDate((commitment?.date)!)
         //println(test)
         
         self.view.backgroundColor = UIColor(red: 4/10, green:4/10, blue:4/10, alpha:1.0)
@@ -36,6 +34,18 @@ class FeedCellViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setTextFieldStyle(textField: UITextField){
+        let border = CALayer()
+        let width = CGFloat(1.0)
+        border.borderColor = UIColor.whiteColor().CGColor
+        border.frame = CGRect(x: 0, y: textField.frame.size.height - width, width:  textField.frame.size.width, height: textField.frame.size.height)
+        
+        border.borderWidth = width
+        textField.layer.borderColor = UIColor.clearColor().CGColor
+        textField.layer.addSublayer(border)
+        textField.layer.masksToBounds = true
     }
     
     
