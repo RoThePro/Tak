@@ -80,6 +80,12 @@ class LoginViewController: UIViewController {
     }
     
     
+    @IBAction func unwindToSegue(segue: UIStoryboardSegue) {
+        
+        println("Unwinded")
+    }
+    
+    
     /*
     // MARK: - Navigation
     

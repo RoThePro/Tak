@@ -325,6 +325,14 @@ class FeedTableViewController: UITableViewController, UIGestureRecognizerDelegat
     }
     
     
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if(testObjects.isEmpty){
+           return false
+        }else{
+            return true
+        }
+    }
+    
     
     var test: UITableViewRowActionStyle = UITableViewRowActionStyle.Default
     
