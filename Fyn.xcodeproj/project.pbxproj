@@ -499,7 +499,7 @@
 				INFOPLIST_FILE = Tak/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Fyn;
-				PROVISIONING_PROFILE = "2336a3fc-b37d-4486-8bda-12d27013e306";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = /Users/Rohan/Documents/Tak/Tak/BridgingHeader.h;
 			};
 			name = Debug;
@@ -518,7 +518,7 @@
 				INFOPLIST_FILE = Tak/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Fyn;
-				PROVISIONING_PROFILE = "2336a3fc-b37d-4486-8bda-12d27013e306";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = /Users/Rohan/Documents/Tak/Tak/BridgingHeader.h;
 			};
 			name = Release;
