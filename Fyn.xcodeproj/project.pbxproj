@@ -489,6 +489,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Tak/Frameworks",
@@ -497,6 +498,7 @@
 				INFOPLIST_FILE = Tak/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Fyn;
+				PROVISIONING_PROFILE = "86da129d-2d58-4f43-94e0-1283fd49815c";
 				SWIFT_OBJC_BRIDGING_HEADER = /Users/Rohan/Documents/Tak/Tak/BridgingHeader.h;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
