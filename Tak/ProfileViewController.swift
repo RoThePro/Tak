@@ -30,7 +30,6 @@ class ProfileViewController: UIViewController {
         userHelper = User()
         commit = Commit()
         userHelper?.getUser({ (result: PFObject?, error: NSError?) -> Void in
-            self.profileImageView.image = UIImage(data: result!["picture"]!.getData()!)
             self.nameLabel.text = result!["name"] as? String
             
             self.setPictureDesign(self.profileImageView)
